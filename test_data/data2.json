@@ -1,0 +1,238 @@
+{
+    "users": {
+        "1": {
+            "first_name": "Will",
+            "last_name": "Carter",
+            "email": "will.carter@fergusllc.com",
+            "city": "Denver",
+            "state": "CO"
+        },
+        "2": {
+            "first_name": "William",
+            "last_name": "Carter",
+            "email": "willcarter72@gmail.com",
+            "city": "Chicago",
+            "state": "IL"
+        },
+        "3": {
+            "first_name": "W",
+            "last_name": "Carter",
+            "email": "decentcolo@gmail.com",
+            "city": "Colorado Springs",
+            "state": "CO"
+        }
+    },
+    "groups": {
+        "incentivize_gamification": {
+            "name": "Incentivization/Gamifiction",
+            "city": "Aurora",
+            "state": "CO"
+        },
+        "decentralize_colorado": {
+            "name": "Decentralize Colorado",
+            "city": "Denver",
+            "state": "CO"
+        },
+        "boulder_blockchain": {
+            "name": "Boulder Blockchain",
+            "city": "Denver",
+            "state": "CO"
+        }
+    },
+    "userGroups": {
+        "1": {
+            "name": "Will Carter",
+            "email": "will.carter@fergusllc.com",
+            "incentivize_gamification": {
+                "name": "Incentivization/Gamifiction",
+                "city": "Aurora",
+                "state": "CO"
+            },
+            "decentralize_colorado": {
+                "name": "Decentralize Colorado",
+                "city": "Denver",
+                "state": "CO"
+            }
+        },
+        "2": {
+            "name": "William Carter",
+            "email": "willcarter72@gmail.com",
+            "boulder_blockchain": {
+                "name": "Boulder Blockchain",
+                "city": "Denver",
+                "state": "CO"
+            }
+        }
+    },
+    "members": {
+        "1": {
+            "first_name": "Thor",
+            "name": "Cramer", 
+            "city": "Denver",
+            "state": "CO"
+        },
+        "2": {
+            "name": "Michele Oster", 
+            "city": "Fort Collins",
+            "state": "CO"
+        },
+        "3": {
+            "name": "Sam Shields", 
+            "city": "Denver",
+            "state": "CO"
+        },
+        "4": {
+            "name": "Levi Button", 
+            "city": "Colorado Springs",
+            "state": "CO"
+        },
+        "5": {
+            "name": "Robert Dylan", 
+            "city": "Denver",
+            "state": "CO"
+        },
+        "6": {
+            "name": "Eddie Morphy", 
+            "city": "Boulder",
+            "state": "CO"
+        },
+        "7": {
+            "name": "Mortimer Jones", 
+            "city": "Boulder",
+            "state": "CO"
+        }
+    },
+    "groupMembers": {
+        "incentivize_gamification": {
+            "1": {
+                "first_name": "Thor",
+                "name": "Cramer", 
+                "city": "Denver",
+                "state": "CO"
+            },
+            "2": {
+                "name": "Michele Oster", 
+                "city": "Fort Collins",
+                "state": "CO"
+            },
+            "3": {
+                "name": "Sam Shields", 
+                "city": "Denver",
+                "state": "CO"
+            }
+        },
+        "decentralize_colorado": {
+            "4": {
+                "name": "Levi Button", 
+                "city": "Colorado Springs",
+                "state": "CO"
+            },
+            "5": {
+                "name": "Robert Dylan", 
+                "city": "Denver",
+                "state": "CO"
+            },
+            "6": {
+                "name": "Eddie Morphy", 
+                "city": "Boulder",
+                "state": "CO"
+            },
+            "7": {
+                "name": "Mortimer Jones", 
+                "city": "Boulder",
+                "state": "CO"
+            }
+        }
+    },
+    "skills": {
+        "1": {
+            "name": "Helping others",
+            "value": 1
+        },
+        "2": {
+            "name": "On task",
+            "value": 1
+        },
+        "3": {
+            "name": "Participating",
+            "value": 1
+        },
+        "4": {
+            "name": "Persistance",
+            "value": 1
+        },
+        "5": {
+            "name": "Teamwork",
+            "value": 1
+        },
+        "6": {
+            "name": "Working Hard",
+            "value": 1
+        },
+        "7": {
+            "name": "Public Speaking",
+            "value": 3
+        }
+    },
+    "groupSkills": {
+        "incentivize_gamification": {
+            "1": {
+                "name": "Helping others",
+                "value": 1
+            },
+            "2": {
+                "name": "On task",
+                "value": 1
+            },
+            "3": {
+                "name": "Participating",
+                "value": 1
+            },
+            "4": {
+                "name": "Persistance",
+                "value": 1
+            },
+            "5": {
+                "name": "Teamwork",
+                "value": 1
+            },
+            "6": {
+                "name": "Working Hard",
+                "value": 1
+            }
+        },
+        "decentralize_colorado": {
+            "1": {
+                "name": "Helping others",
+                "value": 1
+            },
+            "3": {
+                "name": "Participating",
+                "value": 1
+            },
+            "7": {
+                "name": "Public Speaking",
+                "value": 3
+            }
+        }
+    },
+    "rewards": {
+        "1": {
+            "timestamp": "01/01/01 1:03pm",
+            "description": "Helping others",
+            "value": 1,
+            "note": "What a good helper"
+        }
+    },
+    "memberRewards": {
+        "7": {
+            "name": "Mortimer Jones",
+            "1": {
+                "timestamp": "01/01/01 1:03pm",
+                "description": "Helping others",
+                "value": 1,
+                "note": "What a good helper"
+            }
+        }
+    }
+}

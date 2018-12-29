@@ -1,0 +1,48 @@
+{
+    "users": {
+        "1": {
+            "name": "Moe",
+            "email": "moe@david.com"
+        },
+        "2": {
+            "name": "Larry",
+            "email": "larry@david.com"
+        },
+        "3": {
+            "name": "Curley",
+            "email": "curley@david.com"
+        }
+    },
+    "events": {
+        "firebase-meetup1": {
+            "name": "Firebase Meetup 1",
+            "date": "01/01/2018"
+        },
+        "firebase-meetup2": {
+            "name": "Firebase Meetup 2",
+            "date": "02/01/2018"
+        }
+    },
+    "eventAttendees": {
+        "firebase-meetup1": {
+            "1": {
+                "name": "Moe",
+                "email": "moe@david.com"
+            },
+            "2": {
+                "name": "Larry",
+                "email": "larry@david.com"
+            }
+        },
+        "firebase-meetup2": {
+            "2": {
+                "name": "Larry",
+                "email": "larry@david.com"
+            },
+            "3": {
+                "name": "Curley",
+                "email": "curley@david.com"
+            }
+        }
+    }
+}
