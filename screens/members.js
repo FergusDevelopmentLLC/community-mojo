@@ -1,49 +1,63 @@
 import React, {Component} from 'react';
+import firebase from "react-native-firebase";
 import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { Icon } from "native-base";
 
-export default class ExampleFour extends Component {
+export default class Members extends Component {
   constructor(props) {
+
     super(props);
+
+    this.membersRef = firebase.firestore().collection("Member");
+    
     this.state = {
       tableHead: [
         ['', 'Name', 'Points', '']
       ],
-      tableData: [
-        ['alien.01.png', 'Thor Cramer', '10', 'X'],
-        ['alien.02.png', 'Michelle Oster', '9', 'X'],
-        ['alien.03.png', 'Mark Shields', '8', 'X'],
-        ['alien.04.png', 'Levi Jeans', '8', 'X'],
-        ['alien.05.png', 'Robert Dylan', '6', 'X'],
-        ['alien.06.png', 'Eddie Morphy', '5', 'X'],
-        ['alien.07.png', 'Mortimer Jones', '0', 'X'],
-      ]
-    }
-  }
- 
-  _alertIndex(index) {
-    Alert.alert(`This is row ${index + 1}`);
+      tableData: []
+    };
   }
 
-  
-  getSource(index) {
-    if(index === 1)
-      return require("./assets/avatars/alien.01.png");
-    else if(index === 2)
-      return require("./assets/avatars/alien.02.png");
-    else if(index === 3)
-      return require("./assets/avatars/alien.03.png");
-    else if(index === 4)
-      return require("./assets/avatars/alien.04.png");
-    else if(index === 5)
-      return require("./assets/avatars/alien.05.png");
-    else if(index === 6)
-      return require("./assets/avatars/alien.06.png");
-    else if(index === 7)
-      return require("./assets/avatars/alien.07.png");
+  componentWillMount(){
+    this.MemberInformation = this.membersRef;
+    this.MemberInformation.get().then(data => this.onCollectionUpdate(data));
   }
-  
+
+  onCollectionUpdate = querySnapshot => {
+
+    const members = [];
+
+    querySnapshot.forEach(doc => {
+
+      const {
+        src,
+        first_name,
+        last_name,
+        points,
+        idc
+      } = doc.data();
+
+      let member = [];
+      member.push(src);
+      member.push(first_name + ' ' + last_name);
+      member.push(points);
+      member.push(doc.id);
+
+      members.push(member);
+
+    });
+
+    this.setState({
+      tableData: members
+    });
+  };
+
+  alertId(id) {
+    //Alert.alert(`${id}`);
+    this.props.navigation.navigate("MemberDetail", { id });
+  }
+
   renderCellStyle(idx) {
     switch (idx) {
       case 1:
@@ -60,10 +74,10 @@ export default class ExampleFour extends Component {
   renderCellElement(data, rowIndex, columnIndex) {
     switch (columnIndex) {
       case 0:
-        return <Image source={this.getSource(rowIndex + 1)} style={{width: 26, height: 34}}></Image>
+        return <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/community-mojo.appspot.com/o/' + data + '?alt=media&token=61d575c7-2811-4056-ad19-ba7d3c616717'}} style={{width: 27, height: 35}}></Image>
       case 3:
-        return <TouchableOpacity onPress={() => this._alertIndex(rowIndex)}>
-                  <View>
+        return <TouchableOpacity onPress={() => this.alertId(data)}>
+                  <View style={{justiftyContent:"center", alignItems:"center"}}>
                     <Icon name="ios-eye" />
                   </View>
                 </TouchableOpacity>
@@ -71,17 +85,6 @@ export default class ExampleFour extends Component {
         return <Text>{data}</Text>
     }
   }
-
-  renderHead(rowData, rowIndex) {
-    console.log(rowData)
-    console.log(rowIndex)
-  }
-  
-  // {
-  //   state.tableHead.map((rowData, rowIndex) => (
-  //     <Row data={ this.renderHead(rowData, rowIndex) } style={styles.head} textStyle={ styles.text }/>
-  //   ))
-  // }
 
   render() {
     const state = this.state;
@@ -115,7 +118,7 @@ export default class ExampleFour extends Component {
                       key={ cellIndex } 
                       data={ cellIndex === 2 ? cellData : this.renderCellElement(cellData, rowIndex, cellIndex) }
                       style={[this.renderCellStyle(cellIndex), { borderTopColor: '#ccc', borderTopWidth: 1 }]}
-                      
+                      textStyle = { cellIndex === 2 || cellIndex === 3 ? {textAlign: 'center'} : "" }
                     />
                   ))
                 }

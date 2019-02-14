@@ -31,7 +31,7 @@ export default class Main extends React.Component {
     //   this.props.navigation.navigate("DrawerNavOrganizer");
     // } else this.props.navigation.navigate("DrawerNavMember");
 
-    this.props.navigation.navigate("DrawerNavOrganizer");
+    this.props.navigation.navigate("NavOrganizer");
   };
 
   signOutUser = async() => {

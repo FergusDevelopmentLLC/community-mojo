@@ -1,30 +1,33 @@
 {
-    "users": {
-        "1": {
+    "User": {
+        "F4GubhZKqWcJnHahL0TQTOP62Jj1": {
+            "first_name": "Will",
+            "last_name": "Carter",
+            "email": "willcarter72@gmail.com",
+            "city": "Denver",
+            "state": "CO",
+            "useruid": "F4GubhZKqWcJnHahL0TQTOP62Jj1"
+        },
+        "Hm56Zhn9TJP9jVYrzJRqHAB8T8H3": {
+            "first_name": "Sam",
+            "last_name": "Sneed",
+            "email": "decentcolo@gmail.com",
+            "city": "Boulder",
+            "state": "CO",
+            "useruid": "Hm56Zhn9TJP9jVYrzJRqHAB8T8H3"
+        },
+        "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2": {
             "first_name": "Will",
             "last_name": "Carter",
             "email": "will.carter@fergusllc.com",
             "city": "Denver",
-            "state": "CO"
-        },
-        "2": {
-            "first_name": "William",
-            "last_name": "Carter",
-            "email": "willcarter72@gmail.com",
-            "city": "Chicago",
-            "state": "IL"
-        },
-        "3": {
-            "first_name": "W",
-            "last_name": "Carter",
-            "email": "decentcolo@gmail.com",
-            "city": "Colorado Springs",
-            "state": "CO"
+            "state": "CO",
+            "useruid": "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2"
         }
     },
-    "groups": {
-        "incentivize_gamification": {
-            "name": "Incentivization/Gamifiction",
+    "Group": {
+        "incentivization_gamification": {
+            "name": "Incentivization/Gamification",
             "city": "Aurora",
             "state": "CO"
         },
@@ -39,105 +42,56 @@
             "state": "CO"
         }
     },
-    "userGroups": {
-        "1": {
-            "incentivize_gamification": {
-                "name": "Incentivization/Gamifiction",
-                "city": "Aurora",
-                "state": "CO"
-            },
-            "decentralize_colorado": {
-                "name": "Decentralize Colorado",
-                "city": "Denver",
-                "state": "CO"
-            }
+    "UserGroups": {
+        "F4GubhZKqWcJnHahL0TQTOP62Jj1": {
+            "incentivization_gamification": true,
+            "decentralize_colorado": true
         },
-        "2": {
-            "boulder_blockchain": {
-                "name": "Boulder Blockchain",
-                "city": "Denver",
-                "state": "CO"
-            }
+        "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2": {
+            "boulder_blockchain": true
         }
     },
-    "members": {
-        "1": {
+    "Member": {
+        "8ub24WSXe3CQYw7BcyGj": {
             "first_name": "Jeff",
-            "name": "Cramer", 
+            "last_name": "Cramer", 
             "city": "Denver",
             "state": "CO"
         },
-        "2": {
-            "name": "Michele Oster", 
+        "dyRrGBtNXb2QgfmcHPjU": {
+            "first_name": "Michele", 
+            "last_name": "Oster", 
             "city": "Fort Collins",
             "state": "CO"
         },
-        "3": {
-            "name": "Daniel Jackson", 
+        "C5WCFOPNmZPlaUYfqW11": {
+            "first_name": "Daniel", 
+            "last_name": "Jackson", 
             "city": "Denver",
             "state": "CO"
         },
-        "4": {
-            "name": "Levi Morris", 
+        "DGl9shcBDNBnPEb1KEv6": {
+            "first_name": "Levi Morris", 
+            "last_name": "Morris", 
             "city": "Colorado Springs",
             "state": "CO"
         },
-        "5": {
-            "name": "Rob Dylan", 
+        "S8hiEWUSbY0I8N5uCTLD": {
+            "first_name": "Rob", 
+            "last_name": "Dylan", 
             "city": "Denver",
-            "state": "CO"
-        },
-        "6": {
-            "name": "Eddie Morphy", 
-            "city": "Boulder",
-            "state": "CO"
-        },
-        "7": {
-            "name": "Mortimer Jones", 
-            "city": "Boulder",
             "state": "CO"
         }
     },
-    "groupMembers": {
-        "incentivize_gamification": {
-            "1": {
-                "first_name": "Jeff",
-                "name": "Cramer", 
-                "city": "Denver",
-                "state": "CO"
-            },
-            "2": {
-                "name": "Michele Oster", 
-                "city": "Fort Collins",
-                "state": "CO"
-            },
-            "3": {
-                "name": "Daniel Jackson", 
-                "city": "Denver",
-                "state": "CO"
-            }
+    "GroupMembers": {
+        "incentivization_gamification": {
+            "8ub24WSXe3CQYw7BcyGj": true,
+            "dyRrGBtNXb2QgfmcHPjU": true,
+            "C5WCFOPNmZPlaUYfqW11": true
         },
         "decentralize_colorado": {
-            "4": {
-                "name": "Levi Jeans", 
-                "city": "Colorado Springs",
-                "state": "CO"
-            },
-            "5": {
-                "name": "Rob Dylan", 
-                "city": "Denver",
-                "state": "CO"
-            },
-            "6": {
-                "name": "Eddie Morphy", 
-                "city": "Boulder",
-                "state": "CO"
-            },
-            "7": {
-                "name": "Mortimer Jones", 
-                "city": "Boulder",
-                "state": "CO"
-            }
+            "DGl9shcBDNBnPEb1KEv6": true,
+            "S8hiEWUSbY0I8N5uCTLD": true
         }
     },
     "skills": {

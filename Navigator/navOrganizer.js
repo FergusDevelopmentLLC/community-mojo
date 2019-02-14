@@ -17,45 +17,36 @@ import meetup_select from "../screens/meetup_select";
 import member from "../screens/member";
 import members from "../screens/members";
 
-const RewardMember = StackNavigator(
+const Members = StackNavigator(
   {
     MeetupSelect: { screen: meetup_select },
     MemberList: { screen: members },
     MemberDetail: { screen: member },
   },
   {
-    initialRouteName: "MemberList"
+    initialRouteName: "MeetupSelect"
   }
 );
 
-const Members = StackNavigator(
-  {
-    ViewMembers: { screen: members }
-  },
-  {
-    initialRouteName: "ViewMembers",
-    navigationOptions: {
-      title: "Members",
-      headerStyle: {
-        backgroundColor: "blue"
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "bold"
-      }
-    }
-  }
-);
+// const Members = StackNavigator(
+//   {
+//     ViewMembers: { screen: members }
+//   },
+//   {
+//     initialRouteName: "ViewMembers",
+//     navigationOptions: {
+//       title: "Members",
+//       headerStyle: {
+//         backgroundColor: "blue"
+//       },
+//       headerTintColor: "#fff",
+//       headerTitleStyle: {
+//         fontWeight: "bold"
+//       }
+//     }
+//   }
+// );
 
-const MemberDetail = StackNavigator(
-  {
-    MemberList: { screen: members },
-    MemberDetail: { screen: member }
-  },
-  {
-    initialRouteName: "MemberList"
-  }
-);
 
 //stack1
 const CreateAQueuePage = StackNavigator(
@@ -118,7 +109,7 @@ const QueuesYouAreInPage = StackNavigator(
 // });
 
 const DrawerOrganizer = DrawerNavigator({
-  "Reward Member": { screen: RewardMember }
+  "Meetup Select": { screen: meetup_select }
 });
 
-export { DrawerOrganizer };
+export { Members };
