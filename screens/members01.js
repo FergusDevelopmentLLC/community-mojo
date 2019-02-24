@@ -1,37 +1,21 @@
 import React, {Component} from 'react';
 import firebase from "react-native-firebase";
 import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
-import { Appbar } from 'react-native-paper';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { Icon } from "native-base";
 
 export default class Members extends Component {
-
-  static navigationOptions = ({ navigation }) => {
-    
-    return {
-      header: (
-        <Appbar.Header>
-          <Appbar.BackAction onPress={() => navigation.goBack()} />
-          <Appbar.Content title={navigation.state.params.group_name}/>
-        </Appbar.Header>
-      ),
-    };
-  };
-
   constructor(props) {
 
     super(props);
 
-    let group_id = this.props.navigation.getParam('group_id', '0');
-    this.membersRef = firebase.firestore().collection('User').doc(firebase.auth().currentUser.uid).collection('Groups').doc(group_id).collection('Members');
+    this.membersRef = firebase.firestore().collection("Member");
     
     this.state = {
       tableHead: [
         ['', 'Name', 'Points', '']
       ],
-      tableData: [],
-      group_id: group_id
+      tableData: []
     };
   }
 
@@ -50,14 +34,15 @@ export default class Members extends Component {
         src,
         first_name,
         last_name,
-        points
+        points,
+        idc
       } = doc.data();
 
       let member = [];
       member.push(src);
       member.push(first_name + ' ' + last_name);
       member.push(points);
-      member.push(doc.id + '|' + first_name + ' ' + last_name);
+      member.push(doc.id);
 
       members.push(member);
 
@@ -68,14 +53,11 @@ export default class Members extends Component {
     });
   };
 
-  alertId(data) {
-    //Alert.alert(`${data}`);
-    let member_id = data.split('|')[0];
-    let member_name = data.split('|')[1];
-    this.props.navigation.navigate("MemberDetail", { group_id: this.state.group_id , member_id: member_id, name: member_name });
+  alertId(id) {
+    //Alert.alert(`${id}`);
+    this.props.navigation.navigate("MemberDetail", { id });
   }
-  
-  
+
   renderCellStyle(idx) {
     switch (idx) {
       case 1:
@@ -106,6 +88,7 @@ export default class Members extends Component {
 
   render() {
     const state = this.state;
+    
     return (
       <View style={styles.container}>
         <Text style={{fontWeight: 'bold', marginBottom: 10}}>Members</Text>      
@@ -184,10 +167,5 @@ const styles = StyleSheet.create({
   },
   imgCell: { 
     lineHeight: 26
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    justifyContent: "flex-start"
   }
 });

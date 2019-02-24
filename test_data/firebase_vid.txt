@@ -1,0 +1,1013 @@
+https://www.youtube.com/watch?v=v_hR4K4auoQ
+
+so what is cloud firestore why it is a
+00:03
+horizontally scaling no sequel document
+00:04
+database in the cloud No
+00:06
+I guess we're done here well that was
+00:07
+easy hey what's that
+00:09
+oh we're not we're not we need more
+00:11
+explanation all right fine I guess can
+00:14
+stay a little while longer let's roll
+00:16
+the credits
+00:17
+[Music]
+00:22
+so let's talk about cloud fire store
+00:24
+cloud fire store is what's known as a no
+00:26
+sequel database now if you're coming
+00:28
+here from the real time database or
+00:30
+Mongo world and already know all about
+00:32
+no sequel databases hey lucky you you
+00:34
+can go ahead and skip forward like eight
+00:36
+minutes into this video because this
+00:38
+next part will probably be review for
+00:39
+you but for the rest of you if you're
+00:41
+used to traditional relational databases
+00:42
+things like my sequel or mobile
+00:45
+frameworks like sequel Lite or core data
+00:47
+you're probably used to keeping all your
+00:49
+data in tables that look a little
+00:50
+something like this
+00:51
+every table has its own schema which
+00:53
+means that every row in that table is
+00:55
+very strictly defined you have a
+00:57
+specific set of columns that you can add
+00:59
+per row and every column has its own
+01:01
+very strict rules about what kind of
+01:03
+data type goes in there oh sorry buddy
+01:05
+your age has to be an integer those are
+01:07
+the rules I didn't make them up because
+01:09
+of this very strict schema usually end
+01:11
+up storing one type of object per table
+01:13
+in your database and if you want to
+01:15
+associate one object with another object
+01:17
+hanging out in another table you're
+01:19
+usually doing that by creating another
+01:20
+column known as a foreign key that
+01:23
+contains the unique ID of that other
+01:25
+entry in that other table for example
+01:27
+let's say I'm creating a database for a
+01:29
+restaurant review site
+01:30
+I might have one table to represent my
+01:32
+restaurants and another table to
+01:33
+represent my reviews and maybe another
+01:35
+for my users now let's see I want to
+01:37
+look up reviews for a particular
+01:39
+restaurant which kind of seems like the
+01:40
+thing I'd want to do in a restaurant
+01:41
+review app I would want a restaurant
+01:44
+foreign key in my reviews table that
+01:45
+shows me which restaurant this
+01:47
+particular review is for and if we
+01:49
+assume I want to show within my review
+01:51
+some info about the author who reviewed
+01:53
+that restaurant I might include another
+01:54
+foreign key for the user so later when I
+01:57
+need to show my restaurant info screen I
+01:59
+would grab some info about the
+02:01
+restaurant from the restaurant table and
+02:02
+then also grab some of the reviews from
+02:04
+my review table where the restaurant
+02:06
+foreign key equals the ID of this
+02:08
+particular restaurant and then I would
+02:10
+also look up the users where the user ID
+02:12
+equals the user foreign key for this
+02:14
+review and then I could use that to add
+02:15
+like user names and profile pictures for
+02:17
+each review for this restaurant now this
+02:20
+is a fair amount of work being done on
+02:21
+the back end right like grabbing all
+02:23
+these entries from all these different
+02:24
+tables and joining them together based
+02:26
+on these foreign keys and all that but
+02:28
+this can be done with a fairly
+02:29
+straightforward select statement in
+02:31
+sequel the database does the work in
+02:33
+grabbing all these pieces from the
+02:34
+different tables and joining
+02:36
+together not you and that is relational
+02:38
+databases in a somewhat overly
+02:40
+simplified nutshell now in the no sequel
+02:42
+world things are a little different
+02:44
+generally speaking all your data is not
+02:46
+going to be stored in neat little tables
+02:47
+like this in fact there's a number of
+02:49
+different ways you can store your data
+02:50
+from like a plain old key value store to
+02:53
+a big nested tree like the real time
+02:54
+database to a collection of JSON objects
+02:57
+but one thing that most of them have in
+02:58
+common is that no sequel databases are
+03:00
+usually schema-less which means there
+03:02
+aren't any database level restrictions
+03:04
+around what kind of data you can put at
+03:06
+any point of the database so I might
+03:08
+have my list of restaurants here with a
+03:10
+bunch of restaurant objects all
+03:11
+containing like a name and a rating and
+03:13
+an address
+03:13
+but that's basically by convention there
+03:16
+are no explicit database level rules
+03:18
+that say all these objects have to all
+03:20
+have the exact same fields within the
+03:22
+exact same types of data or even that
+03:24
+these need to be objects that represent
+03:25
+restaurants so this loosey-goosey
+03:27
+approach might seem a little weird at
+03:29
+first but it does have some advantages a
+03:31
+lot of developers like working with a
+03:33
+schema list database because it means
+03:34
+they can really easily iterate on their
+03:36
+database design by adding or changing
+03:38
+fields as needed and it won't
+03:40
+necessarily break anything else like I
+03:43
+could start adding a noise level value
+03:44
+for my restaurants and only start adding
+03:47
+it for new restaurants I wouldn't have
+03:48
+to worry about having to backfill it for
+03:50
+all my existing restaurants my no sequel
+03:52
+database can handle that without
+03:54
+freaking out it can also come in handy
+03:55
+in other situations too or I might want
+03:57
+to store data that's similar to each
+03:59
+other but not exactly the same for
+04:01
+example I could easily expand my
+04:02
+restaurant app to include like bars and
+04:04
+tattoo parlors and skydiving lessons for
+04:07
+what sounds like a pretty awesome night
+04:08
+out and my database doesn't care that
+04:10
+one object has like a tandem jumps field
+04:12
+and another has a tattoo style field
+04:14
+right I don't have to fight with my
+04:16
+database to add these slightly different
+04:18
+types of establishments the drawback
+04:20
+here is that you do need to code a
+04:21
+little defensively while you can set up
+04:23
+security rules to help enforce what kind
+04:25
+of data you put where there's not really
+04:27
+any guaranteed at the database level
+04:29
+that you're going to retrieve a certain
+04:31
+set of data at any time and that means
+04:33
+you're probably going to want to do some
+04:34
+checking on the client side to make sure
+04:36
+the data you're getting is really what
+04:38
+you're expecting and fail nicely when it
+04:40
+isn't
+04:40
+but honestly coding defensively is
+04:42
+probably a good idea anyway particularly
+04:44
+in the mobile world you can't always
+04:45
+guarantee you that your users will be
+04:47
+running the latest version of your
+04:48
+client
+04:49
+up against the latest iteration of your
+04:51
+database so I'm kind of hoping this is a
+04:53
+habit many of you are used to already
+04:54
+and if not this is a great time to get
+04:57
+started the other important aspect of no
+04:58
+sequel databases is that and I'm sure
+05:00
+this is going to shock you there's no
+05:02
+sequel meaning that all those fancy
+05:03
+joins where I was able to say hey go
+05:05
+grab the review from this part of the
+05:07
+database and the user from this other
+05:08
+part and merge them all together I can't
+05:10
+do that here in general if I need to
+05:12
+grab objects from three different parts
+05:14
+of the database I would need to make
+05:16
+three entirely different database
+05:17
+requests and that's usually not going to
+05:19
+happen or I guess that's not going to be
+05:21
+your default way of thinking instead
+05:23
+you're going to want to put your data in
+05:24
+places where you can grab it all
+05:26
+together if you need to and that does
+05:27
+mean you might be putting duplicate data
+05:29
+in multiple places for example let's
+05:31
+take a look at what a no sequel version
+05:33
+of our restaurant review app might look
+05:34
+like you probably expect to see
+05:36
+restaurants listed as their own
+05:37
+individual objects in our database but
+05:40
+now depending on your database reviews
+05:41
+can be embedded within the restaurant
+05:43
+itself but I think they'd most likely be
+05:45
+their own objects and then you'd find
+05:47
+some way to indicate that these go
+05:48
+together the reviews themselves might
+05:50
+include the ID of the restaurant for
+05:52
+example now with this setup I can fairly
+05:54
+easily fetch an individual restaurant or
+05:56
+a group of restaurants and through some
+05:58
+careful querying I could fetch all
+06:00
+reviews for an individual restaurant but
+06:02
+I typically can't do both of these
+06:03
+requests in one single call but for a
+06:06
+restaurant review app this is probably
+06:07
+fine right like users first gonna want
+06:09
+to view a summary of like 20 or 30
+06:11
+restaurants and then drill down into one
+06:13
+of these to see more details and it's
+06:15
+really only at this point that I'd want
+06:16
+to request these extra reviews so so far
+06:19
+not too bad but what if we want to show
+06:20
+the reviewers name and profile picture
+06:22
+in those reviews this is where it gets a
+06:24
+little tricky let's assume our users are
+06:26
+represented by their own objects
+06:27
+elsewhere within the database and while
+06:30
+I could add references to these users
+06:31
+from within my review objects there's
+06:34
+still no way for the database to
+06:35
+automatically grab like that user's name
+06:37
+and profile for each review as I'm
+06:39
+requesting them I would need to make a
+06:41
+separate database request for every
+06:43
+single review I get to fetch this
+06:45
+information and that's bad so if we want
+06:48
+to automatically include some
+06:49
+information about who wrote a particular
+06:51
+review we would most likely need to copy
+06:53
+some of that user profile data the
+06:55
+author's name and picture for instance
+06:57
+and place it into our review object now
+06:59
+if you're coming from a traditional
+07:01
+relational database world you're
+07:02
+probably
+07:03
+freaking out right now right you're like
+07:04
+oh what are you doing you're gonna have
+07:05
+like duplicate data all over your
+07:07
+database and that's like the worst thing
+07:08
+ever to happen in programming since go
+07:10
+to statements and you know you're kind
+07:13
+of right people have spent their time
+07:14
+with relational databases have been
+07:16
+taught that data normalization meaning
+07:18
+that every piece of data should only
+07:19
+exist in one place in your database is
+07:21
+super important and they kind of got a
+07:24
+point like in a situation like this it
+07:26
+would be a lot more work if my user
+07:27
+decided to change their profile picture
+07:29
+I need to look up every review or I've
+07:31
+copied over this profile picture
+07:33
+information and replace it with the new
+07:34
+one and there's always a risk that I
+07:36
+don't change it everywhere and suddenly
+07:38
+I've got inconsistent data in my
+07:40
+database and so now maybe you're
+07:42
+thinking well this just seems terrible
+07:43
+why is it that no sequel databases are
+07:46
+so hot right now why are there so many
+07:47
+developers moving away from this nice
+07:49
+world of like clean tables and data
+07:51
+normalization and joint statements for
+07:53
+this crazy new messy world of data
+07:55
+storage so yes one of the big drawbacks
+07:57
+of having this duplicate data is that
+07:59
+when I change it I have to change it in
+08:01
+multiple locations but on the other hand
+08:02
+anytime I want to grab a review it's
+08:04
+really freakin easy like all the data is
+08:07
+right there for me all in one place no
+08:09
+need to run joins across multiple tables
+08:11
+or anything like that and while that
+08:12
+means our rights are going to be more
+08:13
+work our database reads end up being
+08:15
+really fast and for many apps if you
+08:18
+really think about it your reads are
+08:19
+gonna outnumber your rights by like a
+08:21
+lot I mean how many times am I gonna
+08:23
+change my profile picture like once a
+08:26
+year at most but on the other hand maybe
+08:28
+a couple dozen people are gonna see my
+08:30
+restaurant review every day so when it
+08:32
+comes to this data here our reads might
+08:34
+outnumber our rights by like seven
+08:36
+thousand to one and so maybe it makes
+08:38
+sense to optimize the case that's gonna
+08:39
+happen seven thousand times over that
+08:41
+case that's going to happen once a year
+08:43
+but I think the biggest advantage with a
+08:45
+no sequel database over traditional
+08:46
+databases is that it's able to
+08:49
+distribute its data across multiple
+08:50
+machines pretty easily and this is a big
+08:53
+deal with most relational databases if
+08:55
+my app gets super popular and I need my
+08:57
+database to scale up to larger and
+08:59
+larger data set I generally need to put
+09:01
+it on bigger and beefier machines and
+09:03
+this is known as scaling vertically on
+09:05
+the other hand with many no sequel
+09:06
+databases like cloud firestore if I need
+09:09
+to scale up to a larger and larger data
+09:10
+set my database can behind the scenes
+09:13
+and pretty much invisibly to me
+09:14
+distribute that data across
+09:16
+several servers and everything just kind
+09:17
+of works and this is known as scaling
+09:19
+horizontally and for those of you who
+09:21
+are working in managed server
+09:22
+environments like the Google cloud
+09:24
+platform or AWS it's pretty easy for
+09:26
+these systems to automatically add or
+09:28
+remove servers to your database as
+09:29
+needed with very little to no downtime
+09:32
+so your database can scale pretty much
+09:34
+automatically without your ever needing
+09:36
+to lift a finger and it's really for
+09:37
+these reasons that you're starting to
+09:39
+see a lot more databases particularly
+09:40
+once hosted in the cloud moving to this
+09:42
+no sequel model but now if you're coming
+09:45
+from a no sequel background like the
+09:46
+firebase real time database not much of
+09:48
+this is new well maybe except for the
+09:50
+automatically scaling part cloud
+09:51
+firestore does handle that a whole lot
+09:52
+better than real time database but it's
+09:55
+more than just that so let's talk more
+09:56
+specifically about Codd fire stores
+09:58
+document collection model in the real
+10:00
+time database world we typically
+10:01
+describe the data that's stored in
+10:03
+firebase as a big JSON tree because well
+10:05
+that's basically what it is right it's a
+10:07
+tree it's got keys and values and those
+10:09
+values can sometimes be objects to
+10:10
+contain other keys and values now cloud
+10:13
+firestore like the real time database is
+10:14
+a collection of objects and all these
+10:16
+objects are stored in a tree like
+10:18
+hierarchical structure and while
+10:19
+databases like the firebase real time
+10:21
+database store everything as a big old
+10:23
+JSON object Claude firestore is a little
+10:25
+more organized and that it's made up of
+10:26
+documents and collections now documents
+10:28
+are similar to JSON objects or
+10:30
+dictionaries they consist of key value
+10:32
+pairs which are referred to as fields in
+10:34
+cloud fire store land and the values of
+10:36
+these fields can be any number of things
+10:38
+from strings to numbers to binary data
+10:40
+to smaller JSON II looking objects which
+10:43
+the team likes to refer to as maps among
+10:45
+other things and that's a document now
+10:47
+collections are basically well
+10:49
+collections of documents you can think
+10:51
+of them like a hash or a dictionary
+10:53
+where the values are always going to be
+10:54
+some kind of document now there are a
+10:56
+few rules when it comes to using these
+10:57
+things the first is that collections can
+10:59
+only contain documents nothing else no
+11:01
+collections of strings or binary blobs
+11:03
+or anything else here
+11:04
+second documents can only be one Megan
+11:06
+sighs any larger than that and you'll
+11:08
+need to break it up
+11:09
+third a document cannot contain another
+11:11
+document documents can point to sub
+11:13
+collections but not other documents
+11:14
+directly so it's very common to see a
+11:16
+collection containing a bunch of
+11:17
+documents which then point to sub
+11:19
+collections that contain other documents
+11:20
+and so on and so forth the fourth rule
+11:22
+is that the very root of a Cloud
+11:24
+firestore tree can only contain
+11:25
+collections now in most real
+11:27
+applications this will seem very
+11:28
+intuitive you'll have
+11:29
+users collection and a tasks collection
+11:32
+and so on I do find the one time this
+11:34
+ends up being confusing is when you're
+11:35
+building your first little tiny test app
+11:37
+where you're storing like two pieces of
+11:39
+data like it's a little weird to store
+11:41
+hello world inside a document that's
+11:42
+then inside a collection but you know in
+11:44
+most real-world use cases this will be
+11:46
+fine trust me so this means that as a
+11:48
+general rule you're going to be drilling
+11:50
+down into your data by specifying a
+11:52
+collection and then a document and then
+11:53
+a collection and then a document and
+11:55
+alternating like that until you get to
+11:56
+the document containing the data you
+11:58
+actually want
+11:59
+since this code can get kind of messy
+12:01
+and awkward you'll often be specifying
+12:03
+the document or collection you want by
+12:05
+creating a path to that document kind of
+12:07
+like this just remember that in your
+12:09
+path you're still going to be
+12:10
+alternating between collection document
+12:12
+collection document and so on so let's
+12:13
+go back to thinking about our restaurant
+12:15
+review app seems like a no-brainer that
+12:16
+we're gonna have a collection called
+12:17
+restaurants and each one of these
+12:19
+documents will contain some information
+12:20
+about the restaurant as well as probably
+12:23
+a pointer to a review sub collection now
+12:25
+within this review sub collection you're
+12:26
+gonna have a bunch of documents and each
+12:28
+document will represent one individual
+12:30
+review and so within these documents
+12:32
+you're going to have a pretty large text
+12:33
+block containing the review itself and
+12:35
+then probably a few other details like
+12:37
+the overall rating and the date and so
+12:39
+on and you know already I'm kind of
+12:41
+digging this hierarchical structure
+12:43
+because it turns out to be pre trivial
+12:45
+to grab all the reviews related to a
+12:46
+restaurant here but then we're also
+12:48
+going to want information about who
+12:50
+wrote this review now I'm pretty sure
+12:52
+our app will have some kind of users
+12:53
+collection but that'll probably be more
+12:55
+of like a top-level collection that
+12:57
+would contain all sorts of information
+12:58
+about that user like their name their
+13:00
+user profile last login time default
+13:02
+location food allergies what-have-you
+13:04
+and this really does feel like a
+13:06
+top-level object not something I'd want
+13:08
+to make as like a sub collection of a
+13:09
+review and so I talked about this
+13:11
+earlier but this probably means that if
+13:13
+we want to include information about the
+13:14
+user who wrote this review our review
+13:17
+documents will probably contain a couple
+13:18
+of fields like author name and author
+13:20
+profile picture since that's probably
+13:22
+the only user information I'm gonna need
+13:24
+when I'm looking at a review and if I
+13:26
+wanted I could also make this a map
+13:28
+field those are the little JSON e
+13:29
+looking things kind of like so and so
+13:31
+this would probably be duplicate data
+13:33
+that would live both in the top-level
+13:34
+user object and in this individual
+13:36
+review and we'll talk in future videos
+13:38
+about the best strategies to keep these
+13:40
+kinds of things consistent incidentally
+13:42
+if you're come
+13:43
+from the firebase real-time database
+13:44
+land this kind of deep nested structure
+13:46
+might be giving you heart palpitations
+13:48
+because in the real-time database world
+13:49
+when you retrieve some element in the
+13:51
+tree you automatically retrieve
+13:53
+everything below it and that would mean
+13:55
+downloading potentially hundreds of
+13:56
+restaurant reviews anytime I want to
+13:58
+grab like a couple dozen restaurant
+14:00
+documents but in cloud firestore world
+14:02
+queries are shallow by default which
+14:04
+means when you grab documents within a
+14:06
+collection you only grab those documents
+14:08
+you don't grab documents and any sub
+14:10
+collections so I can go ahead and grab
+14:12
+my 20 top rated burrito restaurants and
+14:14
+just get those restaurant documents
+14:16
+without all the reviews associated with
+14:18
+them which you know kind of makes sense
+14:19
+right I mean if I'm doing a search in my
+14:21
+mobile app for best burrito places that
+14:24
+results page is just gonna contain that
+14:25
+basic restaurant info I don't need the
+14:27
+individual reviews at this point later
+14:29
+if I were to click on one of those
+14:30
+burrito places to get more info that's
+14:32
+when I want to see the individual
+14:33
+reviews and that's probably the point
+14:35
+where it makes sense for my app to
+14:36
+request them from the database make
+14:38
+sense all right so I know that was a lot
+14:40
+to go over but let's summarize cloud
+14:42
+firestore is a no sequel horizontally
+14:45
+scaling document model database in the
+14:48
+cloud see just why I said in the
+14:50
+beginning all kind of makes sense now
+14:51
+right now there's plenty more to talk
+14:54
+about here like how you can run queries
+14:55
+in cloud firestore tips for optimizing
+14:57
+your data and how to keep it all secure
+15:00
+all of which are great topics for future
+15:01
+videos and hey lucky you we're making a
+15:04
+whole series all about cloud firestore
+15:06
+so if you want to keep watching and you
+15:08
+want to keep learning about cloud
+15:10
+firestore why you go ahead and subscribe
+15:11
+to our youtube channel and then I can
+15:13
+see you soon in a future episode all
+15:16
+right thanks for watching YouTube land
+15:17
+I'll talk to you soon
+15:18
+[Music]

@@ -1,0 +1,38 @@
+    {
+        "User": {
+            "Hm56Zhn9TJP9jVYrzJRqHAB8T8H3": {
+                "first_name": "Sam",
+                "last_name": "Sneed"
+            },
+            "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2": {
+                "first_name": "Will",
+                "last_name": "Jeff Smith"
+            }
+        },
+        "Group": {
+            "group3": {
+                "name": "Group Three",
+                "city": "Aurora",
+                "state": "CO"
+            },
+            "group4": {
+                "name": "Group Four",
+                "city": "Denver",
+                "state": "CO"
+            },
+            "group5": {
+                "name": "Group Five",
+                "city": "Fort Collins",
+                "state": "CO"
+            }
+        },
+        "UserGroups": {
+            "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2": {
+                "group3": true,
+                "group4": true
+            },
+            "F4GubhZKqWcJnHahL0TQTOP62Jj1": {
+                "group5": true
+            }
+        }
+    }

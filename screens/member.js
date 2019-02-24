@@ -1,41 +1,50 @@
 import React, {Component} from 'react';
 import firebase from "react-native-firebase";
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
-
-// export default class Member extends React.Component {
-//   render() {
-    
-//     const itemId = this.props.navigation.getParam('id', '0');
-
-//     return (
-//       <View style = {styles.container}>
-// 	      <Text style = {styles.countText}>Member Detail {JSON.stringify(itemId)}</Text>
-//       </View>
-//     );
-//   }
-// }
-
+import {Platform, StyleSheet, Text, View, Button, FlatList, Dimensions} from 'react-native';
+import { Appbar } from 'react-native-paper';
 
 export default class Member extends Component {
+
+  static navigationOptions = ({ navigation }) => {
+    
+    return {
+      header: (
+        <Appbar.Header>
+          <Appbar.BackAction onPress={() => navigation.goBack()} />
+          <Appbar.Content title={navigation.state.params.name}/>
+        </Appbar.Header>
+      ),
+    };
+  };
+
   constructor(props) {
 
     super(props);
 
     this.setState({
       id: 0,
-      member: null
+      member: null,
+      skills: [
+        { key: 'A' }, 
+        { key: 'B' }, 
+        { key: 'C' }, 
+        { key: 'D' }, 
+        { key: 'E' }, 
+        { key: 'F' }
+      ]
     });
 
-    this.membersRef = firebase.firestore().collection("Member");
+    let group_id = this.props.navigation.getParam('group_id', '0');
+    let member_id = this.props.navigation.getParam('member_id', '0');
+    this.memberRef = firebase.firestore().collection('User').doc(firebase.auth().currentUser.uid).collection('Groups').doc(group_id).collection('Members').doc(member_id);
+
   }
 
   componentWillMount(){
-    const itemId = this.props.navigation.getParam('id', '0');
     this.setState({
-      id: itemId,
       member: null
     });
-    this.MemberInformation = this.membersRef;
+    this.MemberInformation = this.memberRef;
     this.MemberInformation.get().then(data => this.onCollectionUpdate(data));
   }
 
@@ -66,10 +75,11 @@ export default class Member extends Component {
     const state = this.state;
     return (
       <View style = {styles.container}>
-	      <Text style = {styles.countText}>Member Detail {JSON.stringify(this.state.itemId)}</Text>
+	      <Text style = {styles.countText}>xMember Detail {JSON.stringify(this.state.itemId)}</Text>
       </View>
     );
   }
+
 }
  
 const styles = StyleSheet.create({

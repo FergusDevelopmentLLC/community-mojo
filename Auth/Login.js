@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   loginbtns: {
     marginTop: "5%",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"
   }

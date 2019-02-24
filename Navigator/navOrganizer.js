@@ -17,16 +17,25 @@ import meetup_select from "../screens/meetup_select";
 import member from "../screens/member";
 import members from "../screens/members";
 
+import group_select from "../screens/group_select";
+
 const Members = StackNavigator(
   {
-    MeetupSelect: { screen: meetup_select },
-    MemberList: { screen: members },
-    MemberDetail: { screen: member },
+    MeetupSelect: { 
+      screen: group_select
+    },
+    MemberList: { 
+      screen: members
+     },
+    MemberDetail: { 
+      screen: member 
+    }
   },
   {
     initialRouteName: "MeetupSelect"
   }
 );
+
 
 // const Members = StackNavigator(
 //   {

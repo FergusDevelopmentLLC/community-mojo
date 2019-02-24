@@ -1,0 +1,131 @@
+    {
+        "__collections__": {
+            "Group": {
+                "boulder_blockchain": {
+                    "city": "Denver",
+                    "state": "CO",
+                    "name": "Boulder Blockchain",
+                    "__collections__": {}
+                },
+                "decentralize_colorado": {
+                    "state": "CO",
+                    "name": "Decentralize Colorado",
+                    "city": "Denver",
+                    "__collections__": {}
+                },
+                "incentivization_gamification": {
+                    "city": "Aurora",
+                    "state": "CO",
+                    "name": "Incentivization/Gamification",
+                    "__collections__": {}
+                },
+                "lightning_talks": {
+                    "city": "Colorado Springs",
+                    "state": "CO",
+                    "name": "CS Lightning talks",
+                    "__collections__": {}
+                }
+            },
+            "GroupMembers": {
+                "decentralize_colorado": {
+                    "DGl9shcBDNBnPEb1KEv6": true,
+                    "S8hiEWUSbY0I8N5uCTLD": true,
+                    "__collections__": {}
+                },
+                "incentivization_gamification": {
+                    "8ub24WSXe3CQYw7BcyGj": true,
+                    "dyRrGBtNXb2QgfmcHPjU": true,
+                    "C5WCFOPNmZPlaUYfqW11": true,
+                    "__collections__": {}
+                }
+            },
+            "Member": {
+                "8ub24WSXe3CQYw7BcyGj": {
+                    "src": "alien.01.png",
+                    "points": 10,
+                    "last_name": "Cramer",
+                    "first_name": "Jeff",
+                    "city": "Denver",
+                    "state": "CO",
+                    "__collections__": {}
+                },
+                "C5WCFOPNmZPlaUYfqW11": {
+                    "src": "alien.03.png",
+                    "points": 10,
+                    "last_name": "Jackson",
+                    "first_name": "Daniel",
+                    "city": "Denver",
+                    "state": "CO",
+                    "__collections__": {}
+                },
+                "DGl9shcBDNBnPEb1KEv6": {
+                    "src": "alien.04.png",
+                    "points": "8",
+                    "last_name": "Morris",
+                    "first_name": "Levi",
+                    "city": "Colorado Springs",
+                    "state": "CO",
+                    "__collections__": {}
+                },
+                "S8hiEWUSbY0I8N5uCTLD": {
+                    "city": "Denver",
+                    "state": "CO",
+                    "src": "alien.9.png",
+                    "points": 6,
+                    "last_name": "Dylan",
+                    "first_name": "Rob",
+                    "__collections__": {}
+                },
+                "dyRrGBtNXb2QgfmcHPjU": {
+                    "src": "alien.02.png",
+                    "points": 9,
+                    "last_name": "Oster",
+                    "first_name": "Michele",
+                    "city": "Fort Collins",
+                    "state": "CO",
+                    "__collections__": {}
+                }
+            },
+            "User": {
+                "F4GubhZKqWcJnHahL0TQTOP62Jj1": {
+                    "state": "IL",
+                    "email": "willcarter72@gmail.com",
+                    "useruid": "F4GubhZKqWcJnHahL0TQTOP62Jj1",
+                    "last_name": "Carter",
+                    "first_name": "Will",
+                    "city": "Chicago",
+                    "__collections__": {}
+                },
+                "Hm56Zhn9TJP9jVYrzJRqHAB8T8H3": {
+                    "last_name": "Sneed",
+                    "first_name": "Sam",
+                    "city": "Boulder",
+                    "state": "CO",
+                    "email": "decentcolo@gmail.com",
+                    "useruid": "Hm56Zhn9TJP9jVYrzJRqHAB8T8H3",
+                    "__collections__": {}
+                },
+                "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2": {
+                    "useruid": "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2",
+                    "last_name": "Carter",
+                    "first_name": "Will",
+                    "city": "Denver",
+                    "state": "CO",
+                    "email": "will.carter@fergusllc.com",
+                    "__collections__": {}
+                }
+            },
+            "UserGroups": {
+                "F4GubhZKqWcJnHahL0TQTOP62Jj1": {
+                    "incentivization_gamification": true,
+                    "decentralize_colorado": true,
+                    "__collections__": {}
+                },
+                "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2": {
+                    "lightning_talks": true,
+                    "boulder_blockchain": true,
+                    "__collections__": {}
+                }
+            }
+        }
+    }
