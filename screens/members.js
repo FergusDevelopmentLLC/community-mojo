@@ -68,13 +68,14 @@ export default class Members extends Component {
     });
   };
 
+  //TODO: fix name
   alertId(data) {
     //Alert.alert(`${data}`);
     let member_id = data.split('|')[0];
     let member_name = data.split('|')[1];
     this.props.navigation.navigate("MemberDetail", { group_id: this.state.group_id , member_id: member_id, name: member_name });
   }
-  
+
   
   renderCellStyle(idx) {
     switch (idx) {

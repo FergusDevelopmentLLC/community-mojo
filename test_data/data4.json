@@ -1,0 +1,188 @@
+{
+    "User": {
+        "F4GubhZKqWcJnHahL0TQTOP62Jj1": {
+            "first_name": "Will",
+            "last_name": "Carter",
+            "email": "willcarter72@gmail.com",
+            "city": "Denver",
+            "state": "CO",
+            "useruid": "F4GubhZKqWcJnHahL0TQTOP62Jj1"
+        },
+        "Hm56Zhn9TJP9jVYrzJRqHAB8T8H3": {
+            "first_name": "Sam",
+            "last_name": "Sneed",
+            "email": "decentcolo@gmail.com",
+            "city": "Boulder",
+            "state": "CO",
+            "useruid": "Hm56Zhn9TJP9jVYrzJRqHAB8T8H3"
+        },
+        "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2": {
+            "first_name": "Will",
+            "last_name": "Carter",
+            "email": "will.carter@fergusllc.com",
+            "city": "Denver",
+            "state": "CO",
+            "useruid": "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2"
+        }
+    },
+    "Group": {
+        "incentivization_gamification": {
+            "name": "Incentivization/Gamification",
+            "city": "Aurora",
+            "state": "CO"
+        },
+        "decentralize_colorado": {
+            "name": "Decentralize Colorado",
+            "city": "Denver",
+            "state": "CO"
+        },
+        "boulder_blockchain": {
+            "name": "Boulder Blockchain",
+            "city": "Denver",
+            "state": "CO"
+        }
+    },
+    "UserGroups": {
+        "F4GubhZKqWcJnHahL0TQTOP62Jj1": {
+            "incentivization_gamification": true,
+            "decentralize_colorado": true
+        },
+        "WQQZ6pcMMgQoTxH9cr2XGaPOq9W2": {
+            "boulder_blockchain": true
+        }
+    },
+    "Member": {
+        "8ub24WSXe3CQYw7BcyGj": {
+            "first_name": "Jeff",
+            "last_name": "Cramer", 
+            "city": "Denver",
+            "state": "CO"
+        },
+        "dyRrGBtNXb2QgfmcHPjU": {
+            "first_name": "Michele", 
+            "last_name": "Oster", 
+            "city": "Fort Collins",
+            "state": "CO"
+        },
+        "C5WCFOPNmZPlaUYfqW11": {
+            "first_name": "Daniel", 
+            "last_name": "Jackson", 
+            "city": "Denver",
+            "state": "CO"
+        },
+        "DGl9shcBDNBnPEb1KEv6": {
+            "first_name": "Levi Morris", 
+            "last_name": "Morris", 
+            "city": "Colorado Springs",
+            "state": "CO"
+        },
+        "S8hiEWUSbY0I8N5uCTLD": {
+            "first_name": "Rob", 
+            "last_name": "Dylan", 
+            "city": "Denver",
+            "state": "CO"
+        }
+    },
+    "GroupMembers": {
+        "incentivization_gamification": {
+            "8ub24WSXe3CQYw7BcyGj": true,
+            "dyRrGBtNXb2QgfmcHPjU": true,
+            "C5WCFOPNmZPlaUYfqW11": true
+        },
+        "decentralize_colorado": {
+            "DGl9shcBDNBnPEb1KEv6": true,
+            "S8hiEWUSbY0I8N5uCTLD": true
+        }
+    },
+    "Skills": {
+        "1": {
+            "name": "Helping others",
+            "value": 1
+        },
+        "2": {
+            "name": "On task",
+            "value": 1
+        },
+        "3": {
+            "name": "Participating",
+            "value": 1
+        },
+        "4": {
+            "name": "Persistance",
+            "value": 1
+        },
+        "5": {
+            "name": "Teamwork",
+            "value": 1
+        },
+        "6": {
+            "name": "Working Hard",
+            "value": 1
+        },
+        "7": {
+            "name": "Public Speaking",
+            "value": 3
+        }
+    },
+    "groupSkills": {
+        "incentivize_gamification": {
+            "1": {
+                "name": "Helping others",
+                "value": 1
+            },
+            "2": {
+                "name": "On task",
+                "value": 1
+            },
+            "3": {
+                "name": "Participating",
+                "value": 1
+            },
+            "4": {
+                "name": "Persistance",
+                "value": 1
+            },
+            "5": {
+                "name": "Teamwork",
+                "value": 1
+            },
+            "6": {
+                "name": "Working Hard",
+                "value": 1
+            }
+        },
+        "decentralize_colorado": {
+            "1": {
+                "name": "Helping others",
+                "value": 1
+            },
+            "3": {
+                "name": "Participating",
+                "value": 1
+            },
+            "7": {
+                "name": "Public Speaking",
+                "value": 3
+            }
+        }
+    },
+    "rewards": {
+        "1": {
+            "timestamp": "01/01/01 1:03pm",
+            "description": "Helping others",
+            "value": 1,
+            "note": "What a good helper"
+        }
+    },
+    "memberRewards": {
+        "7": {
+            "name": "Mortimer Jones",
+            "1": {
+                "timestamp": "01/01/01 1:03pm",
+                "description": "Helping others",
+                "value": 1,
+                "note": "What a good helper"
+            }
+        }
+    }
+}

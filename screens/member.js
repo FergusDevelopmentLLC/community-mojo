@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import firebase from "react-native-firebase";
-import {Platform, StyleSheet, Text, View, Button, FlatList, Dimensions} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, FlatList, Dimensions, Image} from 'react-native';
 import { Appbar } from 'react-native-paper';
 
 export default class Member extends Component {
@@ -21,19 +21,38 @@ export default class Member extends Component {
 
     super(props);
 
-    this.setState({
+    this.state = {
       id: 0,
+      numColumns: 4,
       member: null,
+      skillwidth: null,
       skills: [
-        { key: 'A' }, 
-        { key: 'B' }, 
-        { key: 'C' }, 
-        { key: 'D' }, 
-        { key: 'E' }, 
-        { key: 'F' }
+        { 
+          name: 'Attended Meetup',
+          points: 1,
+          
+        }, 
+        { 
+          name: 'Public Speaking',
+          points: 1,
+          
+        }, 
+        { 
+          name: 'Brought Food',
+          points: 1,
+        }, 
+        { 
+          name: 'Travel',
+          points: 2,
+        }, 
+        { 
+          name: 'Organized Event',
+          points: 10,
+        }
       ]
-    });
+    };
 
+    
     let group_id = this.props.navigation.getParam('group_id', '0');
     let member_id = this.props.navigation.getParam('member_id', '0');
     this.memberRef = firebase.firestore().collection('User').doc(firebase.auth().currentUser.uid).collection('Groups').doc(group_id).collection('Members').doc(member_id);
@@ -41,45 +60,92 @@ export default class Member extends Component {
   }
 
   componentWillMount(){
-    this.setState({
-      member: null
-    });
+    
+    
+
     this.MemberInformation = this.memberRef;
     this.MemberInformation.get().then(data => this.onCollectionUpdate(data));
   }
 
   onCollectionUpdate = querySnapshot => {
+    
+    this.setState({
+      member: querySnapshot._data,
+    });
 
     //const member
 
-    querySnapshot.forEach(doc => {
+    // querySnapshot.forEach(doc => {
 
-      const {
-        src,
-        first_name,
-        last_name,
-        points,
-        idc
-      } = doc.data();
+    //   const {
+    //     src,
+    //     first_name,
+    //     last_name,
+    //     points,
+    //     idc
+    //   } = doc.data();
 
-      console.log(doc);
+    //   console.log(doc);
 
-    });
+    // });
 
-    this.setState({
-      member: null
-    });
   };
 
-  render() {
-    const state = this.state;
+  formatData = (data, numColumns) => {
+  
+    const numberOfFullRows = Math.floor(data.length / numColumns);
+  
+    let numberOfElementsLastRow = data.length - (numberOfFullRows * numColumns);
+    while (numberOfElementsLastRow !== numColumns && numberOfElementsLastRow !== 0) {
+      data.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
+      numberOfElementsLastRow++;
+    }
+  
+    return data;
+  };
+
+  renderItem = ({ item, index, numColumns }) => {
+
+    console.log(item);
+    const sideWidth = (Dimensions.get('window').width - 160) / 4
+
+    if (item.empty === true) {
+      return <View style={[styles.item, styles.itemInvisible]} />;
+    }
     return (
-      <View style = {styles.container}>
-	      <Text style = {styles.countText}>xMember Detail {JSON.stringify(this.state.itemId)}</Text>
+      <View style={styles.item}>
+        <Image source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/community-mojo.appspot.com/o/blockrado128.png?alt=media&token=61d575c7-2811-4056-ad19-ba7d3c616717' }} style={{ width: sideWidth, height: sideWidth }}></Image>
+        <Text key={index} style={styles.itemText}>{item.name}</Text>
       </View>
     );
-  }
+  };
 
+
+  render() {
+    if (this.state.member) {
+      return (
+        <View style={styles.container}>
+          <View style={styles.justifycontainer}>
+            <Image source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/community-mojo.appspot.com/o/' + this.state.member['src'] + '?alt=media&token=61d575c7-2811-4056-ad19-ba7d3c616717' }} style={{ width: 81, height: 105 }}></Image>
+          </View>
+          <View style={styles.namecontainer}>
+            <Text style={{fontWeight: 'bold', fontSize: 25, color: '#000'}}>
+              {this.state.member['first_name'] + ' ' + this.state.member['last_name']}
+            </Text>
+          </View>
+          <FlatList
+            data={this.formatData(this.state.skills, this.state.numColumns)}
+            style={styles.container}
+            renderItem={this.renderItem}
+            numColumns={this.state.numColumns}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </View>
+      )
+    } else {
+      return <View></View>
+    }
+  }
 }
  
 const styles = StyleSheet.create({
@@ -88,6 +154,15 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 30,
     backgroundColor: '#fff'
+  },
+  justifycontainer: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  namecontainer: {
+    marginTop: '5%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   head: { 
     height: 30,
@@ -118,5 +193,30 @@ const styles = StyleSheet.create({
   },
   imgCell: { 
     lineHeight: 26
+  },
+  image: {
+    width: 50,
+    height: 50
+  },
+  flcontainer: {
+    flex: 1,
+    marginVertical: 20,
+  },
+  item: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    margin: 1,
+    height: (Dimensions.get('window').width - 50) / 4, // approximate a square
+  },
+  itemInvisible: {
+    backgroundColor: 'transparent',
+  },
+  itemText: {
+    color: '#000000',
+    fontSize: 9.5,
+    marginTop: 2
   }
 });
+
