@@ -33,7 +33,7 @@ export default class Login extends React.Component {
           city: this.state.city,
           state: this.state.state
         }
-        firebase.firestore().collection("User").doc(res.user.uid).set(account);
+        firebase.firestore().collection("users").doc(res.user.uid).set(account);
       })
       .catch(error =>
         this.setState(

@@ -24,7 +24,7 @@ export default class Members extends Component {
     super(props);
 
     let group_id = this.props.navigation.getParam('group_id', '0');
-    this.membersRef = firebase.firestore().collection('User').doc(firebase.auth().currentUser.uid).collection('Groups').doc(group_id).collection('Members');
+    this.membersRef = firebase.firestore().collection('groups').doc(group_id).collection('members');
     
     this.state = {
       tableHead: [
@@ -42,7 +42,7 @@ export default class Members extends Component {
 
   onCollectionUpdate = querySnapshot => {
 
-    const members = [];
+    let members = [];
 
     querySnapshot.forEach(doc => {
 
@@ -90,6 +90,7 @@ export default class Members extends Component {
     }
   }
 
+  
   renderCellElement(data, rowIndex, columnIndex) {
     switch (columnIndex) {
       case 0:

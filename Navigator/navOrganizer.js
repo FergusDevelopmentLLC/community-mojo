@@ -36,7 +36,6 @@ const Members = StackNavigator(
   }
 );
 
-
 // const Members = StackNavigator(
 //   {
 //     ViewMembers: { screen: members }

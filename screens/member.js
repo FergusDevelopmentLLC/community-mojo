@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import firebase from "react-native-firebase";
 import {Platform, StyleSheet, Text, View, Button, FlatList, Dimensions, Image} from 'react-native';
 import { Appbar } from 'react-native-paper';
+import console = require('console');
 
 export default class Member extends Component {
 
@@ -17,6 +18,7 @@ export default class Member extends Component {
     };
   };
 
+
   constructor(props) {
 
     super(props);
@@ -29,7 +31,7 @@ export default class Member extends Component {
       skills: [
         { 
           name: 'Attended Meetup',
-          points: 1,
+          points: 1
           
         }, 
         { 
@@ -52,20 +54,41 @@ export default class Member extends Component {
       ]
     };
 
-    
     let group_id = this.props.navigation.getParam('group_id', '0');
     let member_id = this.props.navigation.getParam('member_id', '0');
-    this.memberRef = firebase.firestore().collection('User').doc(firebase.auth().currentUser.uid).collection('Groups').doc(group_id).collection('Members').doc(member_id);
-
+    this.memberRef = firebase.firestore().collection('groups').doc(group_id).collection('members').doc(member_id);
+    this.skillsRef = firebase.firestore().collection('groups').doc(group_id).collection('members').doc(member_id).collection('skills');
+    
   }
 
-  componentWillMount(){
-    
-    
-
+  componentDidMount(){
     this.MemberInformation = this.memberRef;
     this.MemberInformation.get().then(data => this.onCollectionUpdate(data));
+    this.skillsRef.get().then(data => this.onSkillsCollectionUpdate(data));
   }
+
+  onSkillsCollectionUpdate = querySnapshot => {
+
+    console.log('here');
+
+    let skills = [];
+
+    querySnapshot.forEach(doc => {
+
+      const {
+        name,
+        points
+      } = doc.data();
+
+      let skill = {};
+      skill.name = doc.name;
+      skill.points = doc.points;
+      skills.push(skill);
+    });
+
+    console.log(skills);
+
+  };
 
   onCollectionUpdate = querySnapshot => {
     
@@ -73,8 +96,7 @@ export default class Member extends Component {
       member: querySnapshot._data,
     });
 
-    //const member
-
+    
     // querySnapshot.forEach(doc => {
 
     //   const {
@@ -106,7 +128,8 @@ export default class Member extends Component {
 
   renderItem = ({ item, index, numColumns }) => {
 
-    console.log(item);
+    //console.log(item);
+
     const sideWidth = (Dimensions.get('window').width - 160) / 4
 
     if (item.empty === true) {

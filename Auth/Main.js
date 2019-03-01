@@ -5,7 +5,7 @@ import { Button, Headline } from "react-native-paper";
 export default class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection("User");
+    this.ref = firebase.firestore().collection("users");
   }
   state = { currentUser: null, UserInfo: [], loading: true };
 
@@ -16,12 +16,7 @@ export default class Main extends React.Component {
     this.setState({ currentUser });
     this.UserInformation = this.ref.where("email", "==", currentUser.email);
     console.log(currentUser.email);
-    //console.log("*****2 this.UserInformation: " + JSON.stringify(this.UserInformation));
-    //console.log("*****2.5 this.UserInformation: " + JSON.stringify(this.UserInformation, getCircularReplacer()));
-    //console.log("*****2.6 this.UserInformation: " + Object.keys(this.UserInformation));
-    //console.log("*****2.7");
-    //console.log(Object.keys(this.UserInformation));
-
+    
     this.UserInformation.get().then(data => this.onCollectionUpdate(data));
   }
 
@@ -44,27 +39,9 @@ export default class Main extends React.Component {
 
   onCollectionUpdate = querySnapshot => {
 
-    console.log("**** onCollectionUpdate");
-    //console.log("**** querySnapshot: " + JSON.stringify(querySnapshot));
-
-    /*
-    console.log("*****8");
-    console.log(Object.keys(querySnapshot));
-    console.log("_changes");
-    console.log(querySnapshot._changes);
-    console.log("_docs");
-    console.log(querySnapshot._docs);
-    console.log("_metadata");
-    console.log(querySnapshot._metadata);
-    console.log("_query");
-    console.log(querySnapshot._query);
-    */
-
     const UserInfo = [];
 
     querySnapshot.forEach(doc => {
-
-      console.log("*****3" + doc);
 
       const {
         email,
@@ -75,7 +52,6 @@ export default class Main extends React.Component {
       } = doc.data();
 
       UserInfo.push({
-        // DocumentSnapshot
         email,
         first_name,
         last_name,
@@ -92,13 +68,11 @@ export default class Main extends React.Component {
 
   render() {
 
-    console.log("*****4 Main.js render");
-
     if (this.state.loading) {
       return null; // or render a loading icon
     }
+    
     const { currentUser, UserInfo } = this.state;
-    console.log("*****5" + currentUser);
     console.log("*****6" + UserInfo);
     
     if(UserInfo.length == 0)

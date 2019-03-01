@@ -23,7 +23,7 @@ import { Button, Appbar } from 'react-native-paper';
             super(props);
 
             console.log(firebase.auth().currentUser.uid);
-            this.userRef = firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid);
+            this.userGroupRef = firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("groups");
 
             this.state = {
                 userGroups: []
@@ -33,44 +33,20 @@ import { Button, Appbar } from 'react-native-paper';
 
         componentDidMount() {
 
-            this.userRef.get().then((user) => {
+            this.userGroupRef.get().then((doc) => {
                 
-                console.log(user);
-
                 let groups = [];
-
-                let user = doc.data();
-                user.id = doc.id;
-                
-                user.ownerofgroups.forEach(doc => {
-                    
-                    console.log(doc);
-
-                    // newItem.id = doc.id;
-                    // if (newItem.userRef) {
-                    //   newItem.userRef.get()
-                    //   .then(res => { 
-                    //     newItem.userData = res.data() 
-                    //     vm.mainListItems.push(newItem);
-                    //   })
-                    //   .catch(err => console.error(err));
-                    // } else {
-                    //   vm.mainListItems.push(newItem);  
-                    // }
+        
+                doc._docs.forEach(function (groupDoc) {
+                    let group = {};
+                    group.id = groupDoc._ref.id;
+                    group.name = groupDoc._data['name'];
+                    groups.push(group);
                 });
 
-                // let groups = [];
-        
-                // doc._docs.forEach(function (groupDoc) {
-                //     let group = {};
-                //     group.id = groupDoc._ref.id;
-                //     group.name = groupDoc._data['name'];
-                //     groups.push(group);
-                // });
-
-                // this.setState({
-                //     userGroups: groups
-                // });
+                this.setState({
+                    userGroups: groups
+                });
         
             });
             

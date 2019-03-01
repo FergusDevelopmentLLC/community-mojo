@@ -17,60 +17,33 @@ import { Button, Appbar } from 'react-native-paper';
             };
           };
 
-
         constructor(props) {
 
             super(props);
 
-            console.log(firebase.auth().currentUser.uid);
-            this.userRef = firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid);
+            this.userGroupRef = firebase.firestore().collection("User").doc(firebase.auth().currentUser.uid).collection("Groups");
 
             this.state = {
                 userGroups: []
             }
         }
 
-
         componentDidMount() {
 
-            this.userRef.get().then((user) => {
+            this.userGroupRef.get().then((doc) => {
                 
-                console.log(user);
-
                 let groups = [];
-
-                let user = doc.data();
-                user.id = doc.id;
-                
-                user.ownerofgroups.forEach(doc => {
-                    
-                    console.log(doc);
-
-                    // newItem.id = doc.id;
-                    // if (newItem.userRef) {
-                    //   newItem.userRef.get()
-                    //   .then(res => { 
-                    //     newItem.userData = res.data() 
-                    //     vm.mainListItems.push(newItem);
-                    //   })
-                    //   .catch(err => console.error(err));
-                    // } else {
-                    //   vm.mainListItems.push(newItem);  
-                    // }
+        
+                doc._docs.forEach(function (groupDoc) {
+                    let group = {};
+                    group.id = groupDoc._ref.id;
+                    group.name = groupDoc._data['name'];
+                    groups.push(group);
                 });
 
-                // let groups = [];
-        
-                // doc._docs.forEach(function (groupDoc) {
-                //     let group = {};
-                //     group.id = groupDoc._ref.id;
-                //     group.name = groupDoc._data['name'];
-                //     groups.push(group);
-                // });
-
-                // this.setState({
-                //     userGroups: groups
-                // });
+                this.setState({
+                    userGroups: groups
+                });
         
             });
             
@@ -80,6 +53,9 @@ import { Button, Appbar } from 'react-native-paper';
             return (
                 <View style={styles.container}>
                     <View style={styles.informationContainer}>
+                        {/* <View style={{ marginBottom: "5%" }}>
+                            <Text style={styles.title}>SELECT YOUR MEETUP</Text>
+                        </View> */}
                         {
                             this.state.userGroups.map((userGroup, index) => (
                                 <View key={index} style={styles.rowbtns}>
@@ -88,7 +64,7 @@ import { Button, Appbar } from 'react-native-paper';
                                         key={index} 
                                         onPress={() => this.props.navigation.navigate("MemberList", { group_id: userGroup.id, group_name:userGroup.name })}
                                         >
-                                        {userGroup.name} ccc
+                                        {userGroup.name}
                                         </Button>
                                 </View>
                             ))
@@ -106,6 +82,7 @@ import { Button, Appbar } from 'react-native-paper';
             )
         }
     }
+
 
     const styles = StyleSheet.create({
         container: {
