@@ -31,33 +31,41 @@ import { Button, Appbar } from 'react-native-paper';
         }
 
 
+
         componentDidMount() {
 
-            this.userRef.get().then((user) => {
+            this.userRef.get().then((doc) => {
                 
-                console.log(user);
+                console.log(doc._data);
 
-                let groups = [];
+                doc._data.owner_of_groups.snapshots()
 
-                let user = doc.data();
-                user.id = doc.id;
-                
-                user.ownerofgroups.forEach(doc => {
-                    
-                    console.log(doc);
-
-                    // newItem.id = doc.id;
-                    // if (newItem.userRef) {
-                    //   newItem.userRef.get()
-                    //   .then(res => { 
-                    //     newItem.userData = res.data() 
-                    //     vm.mainListItems.push(newItem);
-                    //   })
-                    //   .catch(err => console.error(err));
-                    // } else {
-                    //   vm.mainListItems.push(newItem);  
-                    // }
+                doc.get('owner_of_groups').then((groups) => {
+                  console.log(groups);
                 });
+                
+                // let groups = [];
+
+                // let user = doc.data();
+                // user.id = doc.id;
+                
+                // user.ownerofgroups.forEach(doc => {
+                    
+                //     console.log(doc);
+
+                //     // newItem.id = doc.id;
+                //     // if (newItem.userRef) {
+                //     //   newItem.userRef.get()
+                //     //   .then(res => { 
+                //     //     newItem.userData = res.data() 
+                //     //     vm.mainListItems.push(newItem);
+                //     //   })
+                //     //   .catch(err => console.error(err));
+                //     // } else {
+                //     //   vm.mainListItems.push(newItem);  
+                //     // }
+                // });
+
 
                 // let groups = [];
         

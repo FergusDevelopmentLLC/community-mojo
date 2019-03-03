@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import firebase from "react-native-firebase";
 import {Platform, StyleSheet, Text, View, Button, FlatList, Dimensions, Image} from 'react-native';
 import { Appbar } from 'react-native-paper';
-import console = require('console');
 
 export default class Member extends Component {
 
