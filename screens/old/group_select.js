@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from "react-native-firebase";
 import { View, StyleSheet, Text, Alert } from 'react-native';
 import { Button, Appbar } from 'react-native-paper';
+import console = require('console');
 
     export default class GroupSelect extends Component {
 
@@ -17,23 +18,27 @@ import { Button, Appbar } from 'react-native-paper';
             };
           };
 
+          
         constructor(props) {
 
             super(props);
 
-            this.userGroupRef = firebase.firestore().collection("User").doc(firebase.auth().currentUser.uid).collection("Groups");
+            this.userGroupRef = firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("groups");
 
             this.state = {
                 userGroups: []
             }
         }
 
+
         componentDidMount() {
 
             this.userGroupRef.get().then((doc) => {
                 
                 let groups = [];
-        
+                
+                console.log(doc._docs);
+
                 doc._docs.forEach(function (groupDoc) {
                     let group = {};
                     group.id = groupDoc._ref.id;

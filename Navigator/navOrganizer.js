@@ -19,10 +19,15 @@ import members from "../screens/members";
 
 import group_select from "../screens/group_select";
 
+import group_create from "../screens/group_create";
+
 const Members = StackNavigator(
   {
     MeetupSelect: { 
       screen: group_select
+    },
+    GroupCreate: { 
+      screen: group_create
     },
     MemberList: { 
       screen: members

@@ -8,11 +8,11 @@ import { Icon } from "native-base";
 export default class Members extends Component {
 
   static navigationOptions = ({ navigation }) => {
-    
+    navigation.state.params.onNavigateBack();
     return {
       header: (
         <Appbar.Header>
-          <Appbar.BackAction onPress={() => navigation.goBack()} />
+          <Appbar.BackAction onPress={() => navigation.navigate('MeetupSelect') } />
           <Appbar.Content title={navigation.state.params.group_name}/>
         </Appbar.Header>
       ),

@@ -20,6 +20,7 @@ export default class Main extends React.Component {
     this.UserInformation.get().then(data => this.onCollectionUpdate(data));
   }
 
+  
   NavigateToGroups = () => {
 
     // if (this.state.UserInfo[0].UserType == "Organizer") {
