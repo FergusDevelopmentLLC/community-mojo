@@ -27,50 +27,29 @@ export default class Member extends Component {
       numColumns: 4,
       member: null,
       skillwidth: null,
-      skills: [
-        { 
-          name: 'Attended Meetup',
-          points: 1
-          
-        }, 
-        { 
-          name: 'Public Speaking',
-          points: 1,
-          
-        }, 
-        { 
-          name: 'Brought Food',
-          points: 1,
-        }, 
-        { 
-          name: 'Travel',
-          points: 2,
-        }, 
-        { 
-          name: 'Organized Event',
-          points: 10,
-        }
-      ]
+      skills: []
     };
 
-    let group_id = this.props.navigation.getParam('group_id', '0');
-    let member_id = this.props.navigation.getParam('member_id', '0');
+    const group_id = this.props.navigation.getParam('group_id', '0');
+    console.log('group_id:' + group_id);
+
+    const member_id = this.props.navigation.getParam('member_id', '0');
+    console.log('member_id:' + member_id);
+    
     this.memberRef = firebase.firestore().collection('groups').doc(group_id).collection('members').doc(member_id);
     this.skillsRef = firebase.firestore().collection('groups').doc(group_id).collection('members').doc(member_id).collection('skills');
-    
   }
-
+  
   componentDidMount(){
     this.MemberInformation = this.memberRef;
     this.MemberInformation.get().then(data => this.onCollectionUpdate(data));
     this.skillsRef.get().then(data => this.onSkillsCollectionUpdate(data));
   }
 
+  
   onSkillsCollectionUpdate = querySnapshot => {
-
-    console.log('here');
-
-    let skills = [];
+    
+    const skills = [];
 
     querySnapshot.forEach(doc => {
 
@@ -80,36 +59,22 @@ export default class Member extends Component {
       } = doc.data();
 
       let skill = {};
-      skill.name = doc.name;
-      skill.points = doc.points;
+      skill.name = doc._data.name;
+      skill.points = doc._data.points;
       skills.push(skill);
     });
 
-    console.log(skills);
+    this.setState({
+      skills: skills
+    });
 
   };
 
+
   onCollectionUpdate = querySnapshot => {
-    
     this.setState({
       member: querySnapshot._data,
     });
-
-    
-    // querySnapshot.forEach(doc => {
-
-    //   const {
-    //     src,
-    //     first_name,
-    //     last_name,
-    //     points,
-    //     idc
-    //   } = doc.data();
-
-    //   console.log(doc);
-
-    // });
-
   };
 
   formatData = (data, numColumns) => {
@@ -125,23 +90,30 @@ export default class Member extends Component {
     return data;
   };
 
+  
   renderItem = ({ item, index, numColumns }) => {
-
-    //console.log(item);
-
+    
     const sideWidth = (Dimensions.get('window').width - 160) / 4
+
+    if(item.points == 1)
+      coin_image = 'coin1.png';
+    else if(item.points == 2)
+      coin_image = 'coin2.png'
+    else if(item.points == 3)
+      coin_image = 'coin3.png'
+    else
+      coin_image = 'coinsack.png'
 
     if (item.empty === true) {
       return <View style={[styles.item, styles.itemInvisible]} />;
     }
     return (
       <View style={styles.item}>
-        <Image source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/community-mojo.appspot.com/o/blockrado128.png?alt=media&token=61d575c7-2811-4056-ad19-ba7d3c616717' }} style={{ width: sideWidth, height: sideWidth }}></Image>
+        <Image source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/community-mojo.appspot.com/o/' + coin_image + '?alt=media&token=61d575c7-2811-4056-ad19-ba7d3c616717' }} style={{ width: sideWidth, height: sideWidth }}></Image>
         <Text key={index} style={styles.itemText}>{item.name}</Text>
       </View>
     );
   };
-
 
   render() {
     if (this.state.member) {

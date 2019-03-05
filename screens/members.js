@@ -68,14 +68,12 @@ export default class Members extends Component {
     });
   };
 
-  //TODO: fix name
-  alertId(data) {
+  goToMemberDetail(data) {
     //Alert.alert(`${data}`);
     let member_id = data.split('|')[0];
     let member_name = data.split('|')[1];
     this.props.navigation.navigate("MemberDetail", { group_id: this.state.group_id , member_id: member_id, name: member_name });
   }
-
   
   renderCellStyle(idx) {
     switch (idx) {
@@ -96,7 +94,7 @@ export default class Members extends Component {
       case 0:
         return <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/community-mojo.appspot.com/o/' + data + '?alt=media&token=61d575c7-2811-4056-ad19-ba7d3c616717'}} style={{width: 27, height: 35}}></Image>
       case 3:
-        return <TouchableOpacity onPress={() => this.alertId(data)}>
+        return <TouchableOpacity onPress={() => this.goToMemberDetail(data)}>
                   <View style={{justiftyContent:"center", alignItems:"center"}}>
                     <Icon name="ios-eye" />
                   </View>
