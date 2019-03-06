@@ -16,10 +16,9 @@ import rescindname from "../screens/rescindname";
 import meetup_select from "../screens/meetup_select";
 import member from "../screens/member";
 import members from "../screens/members";
-
 import group_select from "../screens/group_select";
-
 import group_create from "../screens/group_create";
+import skill_create from "../screens/skill_create";
 
 const Members = StackNavigator(
   {
@@ -34,6 +33,9 @@ const Members = StackNavigator(
      },
     MemberDetail: { 
       screen: member 
+    },
+    SkillCreate: { 
+      screen: skill_create 
     }
   },
   {
