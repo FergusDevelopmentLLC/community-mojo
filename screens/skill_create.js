@@ -33,14 +33,18 @@ export default class SkillCreate extends Component {
             toast: false
         };
 
-        this.group_id = this.props.navigation.getParam('group_id', '0');
-        this.member_id = this.props.navigation.getParam('member_id', '0');
+        let group_id = this.props.navigation.getParam('group_id', '0');
+        let member_id = this.props.navigation.getParam('member_id', '0');
 
-        this.memberRef = firebase.firestore().collection('groups').doc(this.group_id).collection('members').doc(this.member_id);
+        this.memberRef = firebase.firestore().collection('groups').doc(group_id).collection('members').doc(member_id);
         this.userRef = firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid);
     }
 
     componentWillMount(){
+
+        this.setState({ member_id: this.props.navigation.getParam('member_id', '0') });
+        
+        this.setState({ group_id: this.props.navigation.getParam('group_id', '0') });
 
         this.memberRef.get().then(doc => { 
             this.setState({
@@ -55,6 +59,7 @@ export default class SkillCreate extends Component {
         });
 
     }
+
 
     handleCreateSkill = () => {
 
@@ -82,7 +87,7 @@ export default class SkillCreate extends Component {
         const batch = firebase.firestore().batch();
 
         //write the member skill full reference
-        const memberSkillsRef = firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).collection('groups').doc(this.state.group_id).collection('skills').doc(newSkillId);
+        const memberSkillsRef = firebase.firestore().collection('groups').doc(this.state.group_id).collection('members').doc(this.state.member_id).collection('skills').doc(newSkillId);
         batch.set(memberSkillsRef, skill);
 
         //write the root skill with reference to this user's award instance
@@ -93,6 +98,7 @@ export default class SkillCreate extends Component {
 
         batch.commit()
             .then(() => {
+                console.log(this.state);
                 //this.props.navigation.state.params.onNavigateBack(); //this calls handleOnNavigateBack in MeetupSelect
                 this.props.navigation.navigate('MemberDetail', { group_id: this.state.group_id , member_id: this.state.member_id, name: this.state.member['first_name'] + ' ' + this.state.member['last_name'] });
             })
@@ -101,6 +107,7 @@ export default class SkillCreate extends Component {
             });
 
     };
+
 
     render() {
         return (
@@ -120,7 +127,7 @@ export default class SkillCreate extends Component {
                                 selectedValue={this.state.points}
                                 style={{ width: '40%', margin: 10, height: 40 }}
                                 onValueChange={(itemValue, itemIndex) => this.setState({ points: itemValue })}>
-                                <Picker.Item label='Points' value='' />
+                                <Picker.Item label='Points' value='0' />
                                 <Picker.Item label='1' value='1' />
                                 <Picker.Item label='2' value='2' />
                                 <Picker.Item label='3' value='3' />
@@ -146,7 +153,7 @@ export default class SkillCreate extends Component {
                             <Button
                                 disabled={
                                     this.state.name.length === 0 ||
-                                    this.state.points === 0
+                                    this.state.points == 0
                                   }
                                 mode='contained'
                                 loading={this.state.loading}
@@ -161,6 +168,7 @@ export default class SkillCreate extends Component {
         )
     }
 }
+
 
 const styles = StyleSheet.create({
     container: {

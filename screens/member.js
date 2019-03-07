@@ -26,20 +26,28 @@ export default class Member extends Component {
       id: 0,
       numColumns: 4,
       member: null,
+      group_id: 0,
+      member_id: 0,
+      member: null,
       group: null,
       skillwidth: null,
       skills: []
     };
 
-    const group_id = this.props.navigation.getParam('group_id', '0');
-    const member_id = this.props.navigation.getParam('member_id', '0');
+    let group_id = this.props.navigation.getParam('group_id', '0');
+    let member_id = this.props.navigation.getParam('member_id', '0');
     
     this.groupRef = firebase.firestore().collection('groups').doc(group_id);
     this.memberRef = firebase.firestore().collection('groups').doc(group_id).collection('members').doc(member_id);
     this.skillsRef = firebase.firestore().collection('groups').doc(group_id).collection('members').doc(member_id).collection('skills');
   }
   
+  
   componentDidMount(){
+
+    this.setState({ member_id: this.props.navigation.getParam('member_id', '0') });
+        
+    this.setState({ group_id: this.props.navigation.getParam('group_id', '0') });
     
     this.groupRef.get().then(doc => { 
       this.setState({
@@ -101,6 +109,7 @@ export default class Member extends Component {
   
     return data;
   };
+
 
   goToCreateSkill(data) {
     //Alert.alert(`${data}`);
