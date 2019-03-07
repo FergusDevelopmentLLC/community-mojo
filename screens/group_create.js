@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
 import firebase from "react-native-firebase";
-import { View, StyleSheet, Alert, Picker } from 'react-native';
-import { Text, TextInput, Appbar, Button } from "react-native-paper";
+import { View, StyleSheet, Picker } from 'react-native';
+import { TextInput, Appbar, Button } from "react-native-paper";
 
 export default class GroupCreate extends Component {
-
-    state = {
-        meetup_name: "",
-        home_city: "",
-        state: "",
-        errorMessage: null,
-        loading: true,
-        toast: false
-    };
 
     static navigationOptions = ({ navigation }) => {
 
@@ -20,7 +11,7 @@ export default class GroupCreate extends Component {
             header: (
                 <Appbar.Header>
                     <Appbar.BackAction onPress={() => navigation.goBack()} />
-                    <Appbar.Content title='Create meetupx' />
+                    <Appbar.Content title='Create meetup' />
                 </Appbar.Header>
             ),
         };
@@ -30,44 +21,16 @@ export default class GroupCreate extends Component {
 
         super(props);
 
-        // console.log(firebase.auth().currentUser.uid);
-        // this.userGroupsRef = firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("groups");
-
-        this.state = state = {
-            meetup_name: "",
-            home_city: "",
-            state: "",
+        this.state = {
+            meetup_name: '',
+            home_city: '',
+            state: '',
             errorMessage: null,
             loading: false,
             toast: false
         };
     }
 
-
-    componentDidMount() {
-
-        //console.log('here');
-        //console.log(this.state.userGroups);
-
-        // this.userGroupsRef.get().then((doc) => {
-
-        //     let groups = [];
-
-        //     doc._docs.forEach(function (groupDoc) {
-        //         let group = {};
-        //         group.id = groupDoc._ref.id;
-        //         group.name = groupDoc._data['name'];
-        //         groups.push(group);
-        //     });
-
-        //     this.setState({
-        //         userGroups: groups
-        //     });
-
-        // });
-
-    }
-        
     handleCreateGroup = () => {
 
         this.setState({ loading: true });
@@ -84,22 +47,25 @@ export default class GroupCreate extends Component {
         }
 
         let newGroupRef = firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).collection('groups').doc();
-        
         let newId = newGroupRef.id;
-
+        
+        //set up a batch
         var batch = firebase.firestore().batch();
 
+        //write new group to user's groups
         var userGroupsRef = firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).collection('groups').doc(newId);
         batch.set(userGroupsRef, groupNoState);
 
+        //write new group at root level
         var groupsRef = firebase.firestore().collection('groups').doc(newId);
         group.refs = [];
         group.refs.push(userGroupsRef);
         batch.set(groupsRef, group);
         
-
+        //commit batch
         batch.commit()
             .then(() => {
+                //make the state of group button list reload from db
                 this.props.navigation.state.params.onNavigateBack(); //this calls handleOnNavigateBack in MeetupSelect
                 this.props.navigation.navigate('MeetupSelect');
             })

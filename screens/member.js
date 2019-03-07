@@ -102,10 +102,8 @@ export default class Member extends Component {
     return data;
   };
 
-  
-  
   goToCreateSkill(data) {
-    Alert.alert(`${data}`);
+    //Alert.alert(`${data}`);
     this.props.navigation.navigate('SkillCreate', { group_id: this.state.group_id , member_id: this.state.member_id });
   }
 
