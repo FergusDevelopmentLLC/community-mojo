@@ -7,11 +7,11 @@ import { Appbar } from 'react-native-paper';
 export default class Member extends Component {
 
   static navigationOptions = ({ navigation }) => {
-    
+    navigation.state.params.onNavigateBack();
     return {
       header: (
         <Appbar.Header>
-          <Appbar.BackAction onPress={() => navigation.goBack()} />
+          <Appbar.BackAction onPress={() => navigation.navigate('MemberList') } />
           <Appbar.Content title={navigation.state.params.name}/>
         </Appbar.Header>
       ),
@@ -42,25 +42,38 @@ export default class Member extends Component {
     this.skillsRef = firebase.firestore().collection('groups').doc(group_id).collection('members').doc(member_id).collection('skills');
   }
   
-  
   componentDidMount(){
 
     this.setState({ member_id: this.props.navigation.getParam('member_id', '0') });
         
     this.setState({ group_id: this.props.navigation.getParam('group_id', '0') });
     
+    this.queryGroup();
+    
+    this.queryMember();
+   
+    this.querySkills();
+  
+  }
+
+  
+  queryGroup() {
     this.groupRef.get().then(doc => { 
       this.setState({
         group: doc._data
       });  
     });
+  }
 
+  queryMember() {
     this.memberRef.get().then(doc => { 
       this.setState({
         member: doc._data
       });  
     });
+  }
 
+  querySkills() {
     this.skillsRef.get().then(data => this.onSkillsCollectionUpdate(data));
   }
 
@@ -113,7 +126,12 @@ export default class Member extends Component {
 
   goToCreateSkill(data) {
     //Alert.alert(`${data}`);
-    this.props.navigation.navigate('SkillCreate', { group_id: this.state.group_id , member_id: this.state.member_id });
+    this.props.navigation.navigate('SkillCreate', { group_id: this.state.group_id , member_id: this.state.member_id, onNavigateBack: this.handleOnNavigateBack });
+  }
+
+  handleOnNavigateBack = () => {
+    this.queryMember();
+    this.querySkills();
   }
 
   renderItem = ({ item, index, numColumns }) => {

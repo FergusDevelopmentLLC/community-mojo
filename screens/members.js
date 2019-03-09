@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import firebase from "react-native-firebase";
-import { StyleSheet, View, Text, TouchableOpacity, Alert, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Alert, Image, ActivityIndicator } from 'react-native';
 import { Appbar } from 'react-native-paper';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { Icon } from "native-base";
+
 
 export default class Members extends Component {
 
@@ -24,20 +25,24 @@ export default class Members extends Component {
     super(props);
 
     let group_id = this.props.navigation.getParam('group_id', '0');
-    this.membersRef = firebase.firestore().collection('groups').doc(group_id).collection('members');
+    this.membersRef = firebase.firestore().collection('groups').doc(group_id).collection('members').orderBy('points', 'desc');
     
     this.state = {
       tableHead: [
-        ['', 'Name', 'Points', '']
+        ['', 'Name', 'Rewards', '']
       ],
       tableData: [],
-      group_id: group_id
+      group_id: group_id,
+      loading: true
     };
   }
 
   componentWillMount(){
-    this.MemberInformation = this.membersRef;
-    this.MemberInformation.get().then(data => this.onCollectionUpdate(data));
+    this.queryMembers();
+  }
+
+  queryMembers() {
+    this.membersRef.get().then(data => this.onCollectionUpdate(data));
   }
 
   onCollectionUpdate = querySnapshot => {
@@ -64,7 +69,8 @@ export default class Members extends Component {
     });
 
     this.setState({
-      tableData: members
+      tableData: members,
+      loading: false
     });
   };
 
@@ -72,7 +78,11 @@ export default class Members extends Component {
     //Alert.alert(`${data}`);
     let member_id = data.split('|')[0];
     let member_name = data.split('|')[1];
-    this.props.navigation.navigate("MemberDetail", { group_id: this.state.group_id , member_id: member_id, name: member_name });
+    this.props.navigation.navigate("MemberDetail", { group_id: this.state.group_id , member_id: member_id, name: member_name, onNavigateBack: this.handleOnNavigateBack });
+  }
+
+  handleOnNavigateBack = () => {
+    this.queryMembers();
   }
   
   renderCellStyle(idx) {
@@ -88,11 +98,16 @@ export default class Members extends Component {
     }
   }
 
-  
+
   renderCellElement(data, rowIndex, columnIndex) {
+    
     switch (columnIndex) {
       case 0:
         return <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/community-mojo.appspot.com/o/' + data + '?alt=media&token=61d575c7-2811-4056-ad19-ba7d3c616717'}} style={{width: 27, height: 35}}></Image>
+      case 2:
+        return <View style={{justiftyContent:"center", alignItems:"center"}}>
+                <Text>${data}</Text>
+              </View>
       case 3:
         return <TouchableOpacity onPress={() => this.goToMemberDetail(data)}>
                   <View style={{justiftyContent:"center", alignItems:"center"}}>
@@ -105,46 +120,65 @@ export default class Members extends Component {
   }
 
   render() {
+
     const state = this.state;
-    return (
-      <View style={styles.container}>
-        <Text style={{fontWeight: 'bold', marginBottom: 10}}>Members</Text>      
-        <Table borderStyle={{borderColor: 'transparent'}}>
-          {
-            state.tableHead.map((rowData, rowIndex) => (
-              <TableWrapper key={rowIndex} style={[styles.row, {height:30}]}>
-                {
-                  rowData.map((cellData, cellIndex) => (
-                    <Cell 
-                      key = { cellIndex } 
-                      data = { cellData }
-                      style = {[this.renderCellStyle(cellIndex)]}
-                      textStyle = { cellIndex === 2 ? {textAlign: 'center'} : "" }
-                    />
-                  ))
-                }
-              </TableWrapper>
-            ))
-          }
-          {
-            state.tableData.map((rowData, rowIndex) => (
-              <TableWrapper key={rowIndex} style={styles.row}>
-                {
-                  rowData.map((cellData, cellIndex) => (
-                    <Cell 
-                      key={ cellIndex } 
-                      data={ cellIndex === 2 ? cellData : this.renderCellElement(cellData, rowIndex, cellIndex) }
-                      style={[this.renderCellStyle(cellIndex), { borderTopColor: '#ccc', borderTopWidth: 1 }]}
-                      textStyle = { cellIndex === 2 || cellIndex === 3 ? {textAlign: 'center'} : "" }
-                    />
-                  ))
-                }
-              </TableWrapper>
-            ))
-          }
-        </Table>
-      </View>
-    )
+
+    if(this.state.loading) {
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" color="#0000ff" />
+        </View>
+      )
+    }
+    if(this.state.loading == false && this.state.tableData.length == 0) {
+      return (
+        <View style={styles.container}>
+          <Text>No members yet</Text>
+        </View>
+      )
+    }
+    else {
+      return (
+        <View style={styles.container}>
+          <Text style={{fontWeight: 'bold', marginBottom: 10}}>Members</Text>      
+          <Table borderStyle={{borderColor: 'transparent'}}>
+            {
+              state.tableHead.map((rowData, rowIndex) => (
+                <TableWrapper key={rowIndex} style={[styles.row, {height:30}]}>
+                  {
+                    rowData.map((cellData, cellIndex) => (
+                      <Cell 
+                        key = { cellIndex } 
+                        data = { cellData }
+                        style = {[this.renderCellStyle(cellIndex)]}
+                        textStyle = { cellIndex === 2 ? {textAlign: 'center'} : "" }
+                      />
+                    ))
+                  }
+                </TableWrapper>
+              ))
+            }
+            {
+              state.tableData.map((rowData, rowIndex) => (
+                <TableWrapper key={rowIndex} style={styles.row}>
+                  {
+                    rowData.map((cellData, cellIndex) => (
+                      <Cell 
+                        key={ cellIndex } 
+                        data={ this.renderCellElement(cellData, rowIndex, cellIndex) }
+                        style={[this.renderCellStyle(cellIndex), { borderTopColor: '#ccc', borderTopWidth: 1 }]}
+                        textStyle = { cellIndex === 2 || cellIndex === 3 ? {textAlign: 'center'} : "" }
+                      />
+                    ))
+                  }
+                </TableWrapper>
+              ))
+            }
+          </Table>
+        </View>
+      )
+    }
+    
   }
 }
  
