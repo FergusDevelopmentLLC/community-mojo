@@ -56,7 +56,6 @@ export default class Member extends Component {
   
   }
 
-  
   queryGroup() {
     this.groupRef.get().then(doc => { 
       this.setState({

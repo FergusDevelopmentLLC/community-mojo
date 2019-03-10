@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import firebase from "react-native-firebase";
-import { View, StyleSheet, Text, Alert } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { Button, Appbar } from 'react-native-paper';
 
 export default class GroupSelect extends Component {
 
     static navigationOptions = ({ navigation }) => {
-
         return {
             header: (
                 <Appbar.Header>
-                    <Appbar.BackAction onPress={() => navigation.goBack()} />
-                    <Appbar.Content title='Select Your meetup' />
+                    <Appbar.Content 
+                        titleStyle = {styles.titleStyle}
+                        title='Select your meetup' />
                 </Appbar.Header>
             ),
         };
     };
-
+    
     constructor(props) {
 
         super(props);
@@ -26,7 +26,8 @@ export default class GroupSelect extends Component {
         this.userGroupsRef = firebase.firestore().collection("users").doc(user_id).collection("groups");
 
         this.state = {
-            userGroups: []
+            userGroups: [],
+            loading: true
         }
     }
 
@@ -59,7 +60,8 @@ export default class GroupSelect extends Component {
         });
 
         this.setState({
-            userGroups: groups
+            userGroups: groups,
+            loading: false
         });
     };
 
@@ -67,56 +69,76 @@ export default class GroupSelect extends Component {
         this.queryGroups();
     }
 
+    signOutUser = async() => {
+        try {
+          await firebase.auth().signOut();
+        } catch (e) {
+          console.log(e);
+        }
+      };
+
+
     render() {
         const state = this.state;
-        return (
-            <View style={styles.container}>
-                <View style={styles.informationContainer}>
-                    {
-                        this.state.userGroups.map((userGroup, index) => (
-                            <View key={index} style={styles.rowbtns}>
-                                <Button
-                                    mode="contained"
-                                    key={index}
-                                    onPress={() => this.props.navigation.navigate("MemberList", { group_id: userGroup.id, group_name: userGroup.name, onNavigateBack: this.handleOnNavigateBack })}
-                                >
-                                    {userGroup.name}
-                                </Button>
-                            </View>
-                        ))
-                    }
-                    <View style={styles.rowbtns}>
-                        <Button
-                            mode="contained"
-                            onPress={() => this.props.navigation.navigate('GroupCreate', { onNavigateBack: this.handleOnNavigateBack })}
-                        >
-                        New
-                        </Button>
+        if(this.state.loading) {
+            return (
+              <View style={styles.container}>
+                <ActivityIndicator size="large" color="#0000ff" />
+              </View>
+            )
+          }
+          else {
+            return (
+                <View style={styles.container}>
+                    <View style={styles.informationContainer}>
+                        {
+                            this.state.userGroups.map((userGroup, index) => (
+                                <View key={index} style={styles.rowbtns}>
+                                    <Button
+                                        mode="contained"
+                                        key={index}
+                                        onPress={() => this.props.navigation.navigate("MemberList", { group_id: userGroup.id, group_name: userGroup.name, onNavigateBack: this.handleOnNavigateBack })}
+                                    >
+                                        {userGroup.name}
+                                    </Button>
+                                </View>
+                            ))
+                        }
+                        <View style={styles.rowbtns}>
+                            <Button
+                                mode="contained"
+                                onPress={() => this.props.navigation.navigate('GroupCreate', { onNavigateBack: this.handleOnNavigateBack })}
+                            >
+                            New
+                            </Button>
+                        </View>
+                        <View style={styles.rowbtns}>
+                            <Button
+                                onPress={() => this.signOutUser()}
+                            >
+                            Sign out
+                            </Button>
+                        </View>
                     </View>
                 </View>
-            </View>
-        )
+            )
+        }
     }
 }
 
 
 const styles = StyleSheet.create({
+    titleStyle: {
+        color: "#fff"
+    },
     container: {
         flex: 1,
-        backgroundColor: "#fff"
+        backgroundColor: "#fff",
+        padding: '2%'
     },
     informationContainer: {
         height: "90%",
         justifyContent: "center"
-    },
-    title: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "#337ab7",
-        textAlign: "center",
-        fontWeight: "bold",
-        fontSize: 17
     },
     rowbtns: {
         paddingTop: "2%",

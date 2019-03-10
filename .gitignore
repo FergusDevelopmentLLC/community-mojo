@@ -40,6 +40,8 @@ buck-out
 # Watchman
 .watchmanconfig
 
+*.keystore
+
 # Android
 .idea
 .gradle

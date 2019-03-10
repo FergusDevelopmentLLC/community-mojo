@@ -1,42 +1,32 @@
-import React, { Component } from "react";
+import { StackNavigator } from "react-navigation";
 
-import { DrawerNavigator, StackNavigator } from "react-navigation";
+import member from "../screens/member";
+import members from "../screens/members";
+import group_select from "../screens/group_select";
+import group_create from "../screens/group_create";
+import skill_create from "../screens/skill_create";
 
-//IMPORT EVERYTHING!!
-import queuers from "../screens/queuers";
-import currentqueuer from "../screens/currentqueuer";
-import listofactivequeues from "../screens/listofactivequeues";
-import joinaqueue from "../screens/joinaqueue";
-import listofyourqueues from "../screens/listofyourqueues";
-import seestatus from "../screens/seestatus";
-import rescindname from "../screens/rescindname";
-
-//stack1
-const ActiveQueuesPage = StackNavigator(
+const Members = StackNavigator(
   {
-    ListOfActiveQueues: { screen: listofactivequeues },
-    JoinAQueue: { screen: joinaqueue }
+    MeetupSelect: { 
+      screen: group_select
+    },
+    GroupCreate: { 
+      screen: group_create
+    },
+    MemberList: { 
+      screen: members
+     },
+    MemberDetail: { 
+      screen: member 
+    },
+    SkillCreate: { 
+      screen: skill_create 
+    }
   },
   {
-    initialRouteName: "ListOfActiveQueues"
-  }
-);
-//stack2
-const QueuesYouAreInPage = StackNavigator(
-  {
-    ListOfYourQueues: { screen: listofyourqueues },
-    SeeStatus: { screen: seestatus },
-    RescindName: { screen: rescindname }
-  },
-  {
-    initialRouteName: "ListOfYourQueues"
+    initialRouteName: "MeetupSelect"
   }
 );
 
-//drawer combining all the stacks
-const DrawerMember = DrawerNavigator({
-  "Active Queues": { screen: ActiveQueuesPage },
-  "Queues You Are In": { screen: QueuesYouAreInPage }
-});
-
-export { DrawerMember };
+export { Members };

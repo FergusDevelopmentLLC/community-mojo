@@ -13,13 +13,14 @@ export default class Login extends React.Component {
     toast: false
   };
 
+  
   handleLogin = () => {
     this.setState({ loading: true });
     const { email, password } = this.state;
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate("Main"))
+      .then(() => this.props.navigation.navigate("NavOrganizer"))
       .catch(error =>
         this.setState(
           { errorMessage: error.message },

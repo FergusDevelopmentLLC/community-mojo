@@ -15,18 +15,12 @@ export default class Main extends React.Component {
 
     this.setState({ currentUser });
     this.UserInformation = this.ref.where("email", "==", currentUser.email);
-    console.log(currentUser.email);
+    //console.log(currentUser.email);
     
     this.UserInformation.get().then(data => this.onCollectionUpdate(data));
   }
 
-  
   NavigateToGroups = () => {
-
-    // if (this.state.UserInfo[0].UserType == "Organizer") {
-    //   this.props.navigation.navigate("DrawerNavOrganizer");
-    // } else this.props.navigation.navigate("DrawerNavMember");
-
     this.props.navigation.navigate("NavOrganizer");
   };
 
@@ -116,52 +110,6 @@ export default class Main extends React.Component {
     );
   }
 }
-
-{/* <View style={{ paddingTop: 10 }}>
-  <View style={styles.textField}>
-    <Text style={{ fontWeight: "bold" }}>Somaiya Email ID: </Text>
-    <Text>{UserInfo[0].email}</Text>
-  </View>
-  <View style={styles.textField}>
-    <Text style={{ fontWeight: "bold" }}>Department: </Text>
-    <Text>{UserInfo[0].department}</Text>
-  </View>
-  <View style={styles.textField}>
-    <Text style={{ fontWeight: "bold" }}>Year: </Text>
-    <Text>{UserInfo[0].year}</Text>
-  </View>
-  <View style={styles.textField}>
-    <Text style={{ fontWeight: "bold" }}>Roll No: </Text>
-    <Text>{UserInfo[0].roll_no}</Text>
-  </View>
-  <View style={styles.rowbtns}>
-    <Button
-      style={[
-        styles.btnstyle,
-        {
-          margin: 10,
-          backgroundColor: "#4CAF50"
-        }
-      ]}
-      mode="contained"
-      onPress={() => this.NavigateToQueue()}
-    >
-      Next
-    </Button>
-    <Button
-      style={[
-        styles.btnstyle,
-        {
-          backgroundColor: "red"
-        }
-      ]}
-      mode="contained"
-      onPress={() => this.signOutUser(currentUser)}
-    >
-      Signout
-    </Button>
-  </View>
-</View> */}
 
 const styles = StyleSheet.create({
   container: {
