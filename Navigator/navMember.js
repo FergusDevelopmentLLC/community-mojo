@@ -1,32 +1,37 @@
 import { StackNavigator } from "react-navigation";
 
-import member from "../screens/member";
-import members from "../screens/members";
-import group_select from "../screens/group_select";
-import group_create from "../screens/group_create";
-import skill_create from "../screens/skill_create";
+import m_group_select from "../screens/m_group_select";
+import m_group_code from "../screens/m_group_code";
+import m_member_create from "../screens/m_member_create";
+import m_pick_member from "../screens/m_pick_member";
+import m_member from "../screens/m_member";
+import m_members from "../screens/m_members";
 
-const Members = StackNavigator(
+const MemberPath = StackNavigator(
   {
-    MeetupSelect: { 
-      screen: group_select
+    memberGroupSelect: { 
+      screen: m_group_select
     },
-    GroupCreate: { 
-      screen: group_create
+    memberEnterCode: { 
+      screen: m_group_code
     },
-    MemberList: { 
-      screen: members
-     },
-    MemberDetail: { 
-      screen: member 
+    memberCreate: { 
+      screen: m_member_create
     },
-    SkillCreate: { 
-      screen: skill_create 
-    }
+    memberPick: { 
+      screen: m_pick_member
+    },
+    memberViewDetail: { 
+      screen: m_member
+    },
+    membersViewGroup: { 
+      screen: m_members
+    },
   },
   {
-    initialRouteName: "MeetupSelect"
+    initialRouteName: "memberGroupSelect"
   }
 );
 
-export { Members };
+
+export { MemberPath };

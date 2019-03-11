@@ -5,6 +5,12 @@ import { Text, TextInput, Button, Snackbar } from "react-native-paper";
 import { Icon } from "native-base";
 
 export default class Login extends React.Component {
+  
+  static navigationOptions = {
+    headerMode: 'none',
+    header: null
+  };
+
   state = {
     email: "",
     password: "",
@@ -31,15 +37,8 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-            {/* https://material.io/tools/icons/ */}
-            <Button 
-              onPress={() => this.props.navigation.navigate("SignupLogin")}
-            >
-              <Icon name="ios-arrow-round-back" />
-            </Button>
-        </View>
-        <View style={{ marginTop: "10%" }}>
+
+        <View style={{ marginTop: "40%" }}>
           <Text style={styles.title}>Log In</Text>
         </View>
         <View style={styles.textinput}>
@@ -61,7 +60,8 @@ export default class Login extends React.Component {
             value={this.state.password}
           />
         </View>
-        <View style={{ height: "30%" }}>
+
+        <View>
           <View style={styles.loginbtns}>
             <Button
               disabled={
@@ -95,6 +95,7 @@ export default class Login extends React.Component {
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    color: "#337ab7",
+    color: "#3700B3",
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 20
@@ -118,11 +119,9 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     marginLeft: "5%",
     marginRight: "5%",
-    height: "40%",
     justifyContent: "flex-end"
   },
   loginbtns: {
-    marginTop: "5%",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"

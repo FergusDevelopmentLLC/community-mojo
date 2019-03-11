@@ -1,15 +1,35 @@
 import { StackNavigator } from "react-navigation";
-import { Members } from "./navOrganizer.js";
+import { createStackNavigator } from "react-navigation";
+import { Init } from "./navInit.js";
 import AuthApp from "../Auth/App.js";
-import Start from "../Auth/start.js";
+import { Members } from "./navOrganizer.js";
+import { MemberPath } from "./navMember.js";
 
-
+// Login Stack
 const InitStk = StackNavigator(
   {
-    InitNavigator: { screen: Start },
+    // AuthNavigator: { screen: AuthApp },
+    // DrawerNavOrganizer: { screen: DrawerOrganizer },
+    // DrawerNavMember: { screen: DrawerMember }
+    
+    InitNavigator: { screen: Init },
     AuthNavigator: { screen: AuthApp },
-    NavOrganizer: { screen: Members }
+    NavOrganizer: { screen: Members },
+    NavMember: { screen: MemberPath }
+  },
+  {
+    headerMode: "none"
   }
 );
+
+
+
+// const InitStk = StackNavigator(
+//   {
+//     InitNavigator: { screen: Init },
+//     AuthNavigator: { screen: AuthApp },
+//     NavOrganizer: { screen: Members }
+//   }
+// );
 
 export { InitStk };

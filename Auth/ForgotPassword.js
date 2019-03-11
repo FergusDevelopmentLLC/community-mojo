@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import firebase from "react-native-firebase";
 import { Text, TextInput, Button, Snackbar } from "react-native-paper";
-import { Icon } from "native-base";
 
 export default class ForgotPassword extends React.Component {
   state = {
@@ -31,18 +30,11 @@ export default class ForgotPassword extends React.Component {
         )
       );
   };
+  
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-            {/* https://material.io/tools/icons/ */}
-            <Button 
-              onPress={() => this.props.navigation.navigate("Login")}
-            >
-              <Icon name="ios-arrow-round-back" />
-            </Button>
-        </View>
-        <View>
+        <View style={{ marginTop: "40%" }}>
           <Text style={styles.title}>Forgot Password</Text>
         </View>
         <View style={styles.textinput}>
@@ -87,6 +79,7 @@ export default class ForgotPassword extends React.Component {
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -102,18 +95,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    color: "#337ab7",
+    color: "#3700B3",
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 20
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    justifyContent: "flex-start"
-  },
   loginbtns: {
-    marginTop: "5%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"

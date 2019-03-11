@@ -46,14 +46,6 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-            {/* https://material.io/tools/icons/ */}
-            <Button 
-              onPress={() => this.props.navigation.navigate("SignupLogin")}
-            >
-              <Icon name="ios-arrow-round-back" />
-            </Button>
-        </View>
         <View>
           <Text style={styles.title}>Create organizer account</Text>
         </View>

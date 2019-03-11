@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import firebase from "react-native-firebase";
 import {StyleSheet, Text, View, FlatList, Dimensions, Image, ImageBackground, Alert, TouchableOpacity } from 'react-native';
 import { Appbar } from 'react-native-paper';
-
+import { getAvatarImageUrl } from "../helper/helpers";
 
 export default class Member extends Component {
 
@@ -206,7 +206,7 @@ export default class Member extends Component {
       return (
         <View style={styles.container}>
           <View style={styles.justifycontainer}>
-            <Image source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/community-mojo.appspot.com/o/' + this.state.member['src'] + '?alt=media&token=61d575c7-2811-4056-ad19-ba7d3c616717' }} style={{ width: 81, height: 105 }}></Image>
+            <Image source={{ uri: getAvatarImageUrl(this.state.member['src']) }} style={{ width: 81, height: 105 }}></Image>
           </View>
           <View style={styles.namecontainer}>
             <Text style={{fontWeight: 'bold', fontSize: 20, color: '#000'}}>
