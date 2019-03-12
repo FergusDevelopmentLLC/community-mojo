@@ -19,6 +19,8 @@ export default class membersViewGroup extends Component {
     };
   };
 
+  
+
   constructor(props) {
 
     super(props);

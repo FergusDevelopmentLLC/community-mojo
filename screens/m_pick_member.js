@@ -5,7 +5,6 @@ import { Appbar, Button } from 'react-native-paper';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { Icon } from "native-base";
 import { getAvatarImageUrl } from "../helper/helpers";
-import DeviceInfo from 'react-native-device-info';
 
 export default class memberPick extends Component {
 
@@ -26,7 +25,8 @@ export default class memberPick extends Component {
         super(props);
 
         let group_id = this.props.navigation.getParam('group_id', '0');
-        
+        let group_name = this.props.navigation.getParam('group_name', '0');
+        this.groupRef = firebase.firestore().collection('groups').doc(group_id);
         this.membersRef = firebase.firestore().collection('groups').doc(group_id).collection('members').orderBy('points', 'desc');
 
         this.state = {
@@ -35,13 +35,19 @@ export default class memberPick extends Component {
             ],
             tableData: [],
             group_id: group_id,
+            group_name: group_name,
+            group: null,
             loading: true
         };
     }
 
     componentDidMount() {
-
         this.queryMembers();
+        this.groupRef.get().then(doc => {
+            this.setState({
+                group: doc._data
+            });
+        });
     }
 
     queryMembers() {
@@ -86,6 +92,27 @@ export default class memberPick extends Component {
         this.props.navigation.navigate("memberViewDetail", { group_id: this.state.group_id, member_id: member_id, name: member_name, save_device_id: true });
     }
 
+    goToMemberCreate() {
+
+        console.log('goToMemberCreate');
+
+        console.log(this.state.group_id);
+        console.log(this.state.group_name);
+        
+        this.props.navigation.navigate("memberCreate", { group_id: this.state.group_id, group_name: this.state.group_name });
+
+        //let member_id = data.split('|')[0];
+        //let member_name = data.split('|')[2];
+
+
+        // console.log(data);
+        // console.log(member_id);
+        // console.log(member_name);
+        
+        // //save unique device id of member
+        
+    }
+
 
     handleOnNavigateBack = () => {
         this.queryMembers();
@@ -121,7 +148,6 @@ export default class memberPick extends Component {
         }
     }
 
-
     render() {
 
         const state = this.state;
@@ -144,7 +170,7 @@ export default class memberPick extends Component {
             return (
                 <View style={styles.container}>
                     <View style={styles.headertextwrapper}>
-                        <Text style={styles.headertext}>Find your name below or <Text style={{ color: 'red' }} onPress={() => { this.props.navigation.navigate("memberCreate") }}> tap here</Text> to join Decentralize Colorado.</Text>
+                        <Text style={styles.headertext}>Find your name below or <Text style={{ color: 'red' }} onPress={() => { this.goToMemberCreate() }}>tap here</Text> to join {this.state.group_name}.</Text>
                     </View>
                     <ScrollView>
                         <Table borderStyle={{ borderColor: 'transparent' }}>

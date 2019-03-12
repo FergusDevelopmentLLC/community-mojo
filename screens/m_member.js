@@ -3,7 +3,6 @@ import firebase from "react-native-firebase";
 import { StyleSheet, Text, View, FlatList, Dimensions, Image, ImageBackground, Alert, TouchableOpacity } from 'react-native';
 import { Appbar, Button } from 'react-native-paper';
 import { getAvatarImageUrl } from "../helper/helpers";
-import DeviceInfo from 'react-native-device-info';
 
 export default class memberViewDetail extends Component {
     
@@ -39,7 +38,6 @@ export default class memberViewDetail extends Component {
             group_id: group_id,
             member_id: member_id,
             save_device_id: save_device_id,
-            device_id: DeviceInfo.getUniqueID(),
             member: null,
             group: null,
             skillwidth: null,
@@ -58,11 +56,11 @@ export default class memberViewDetail extends Component {
 
     async componentDidMount() {
 
-        console.log(this.state.save_device_id);
+        //console.log(this.state.save_device_id);
 
         //any members current members tagged with device id?
-        let rootMembersClearDeviceId = await this.membersRootClearDeviceIdRef.get();
-        console.log(rootMembersClearDeviceId);
+        //let rootMembersClearDeviceId = await this.membersRootClearDeviceIdRef.get();
+        //console.log(rootMembersClearDeviceId);
 
         // if(this.state.save_device_id) {
         //     let update = { device_id: this.state.device_id };
@@ -225,7 +223,7 @@ export default class memberViewDetail extends Component {
                         <Image source={{ uri: getAvatarImageUrl(this.state.member['src']) }} style={{ width: 81, height: 105 }}></Image>
                     </View>
                     <View style={styles.namecontainer}>
-                        <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#000' }}>{user_name}z</Text>
+                        <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#000' }}>{user_name}</Text>
                     </View>
                     <View style={styles.groupcontainer}>
                         <Button 

@@ -1,4 +1,3 @@
-
 export function getAvatarImageUrl(data) { 
 
     image_url_array = [];
@@ -53,4 +52,10 @@ export function getAvatarImageUrl(data) {
 
     let index = parseInt(data.split('.')[1]);
     return image_url_array[index-1];
+}
+
+export function randomString(length, chars) {
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    return result;
 }

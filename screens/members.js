@@ -8,6 +8,7 @@ import { getAvatarImageUrl } from "../helper/helpers";
 
 export default class Members extends Component {
 
+
     static navigationOptions = ({ navigation }) => {
         navigation.state.params.onNavigateBack();
         return {
@@ -26,6 +27,7 @@ export default class Members extends Component {
 
         let group_id = this.props.navigation.getParam('group_id', '0');
         this.membersRef = firebase.firestore().collection('groups').doc(group_id).collection('members').orderBy('points', 'desc');
+        this.groupRef = firebase.firestore().collection('groups').doc(group_id);
 
         this.state = {
             tableHead: [
@@ -33,13 +35,23 @@ export default class Members extends Component {
             ],
             tableData: [],
             group_id: group_id,
+            code: '',
             loading: true
         };
     }
 
-
-    componentDidMount() {
+    async componentDidMount() {
         this.queryMembers();
+        this.queryGroup();
+    }
+
+
+    async queryGroup() {
+        let group = await this.groupRef.get();
+        console.log(group);
+        this.setState({
+            code: group._data.member_code
+        });
     }
 
     queryMembers() {
@@ -133,13 +145,14 @@ export default class Members extends Component {
         if (this.state.loading == false && this.state.tableData.length == 0) {
             return (
                 <View style={styles.container}>
-                    <Text>No members yet</Text>
+                    <Text>No members yet (member_code: {this.state.code})</Text>
                 </View>
             )
         }
         else {
             return (
                 <View style={styles.container}>
+                    <Text style={{  marginBottom: 3 }}>Member_code: {this.state.code}</Text>
                     <Text style={{ fontWeight: 'bold', marginBottom: 10 }}>Members</Text>
                     <Table borderStyle={{ borderColor: 'transparent' }}>
                         {

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'react-native-firebase';
 import { View, StyleSheet, Picker, Alert } from 'react-native';
-import { TextInput, Appbar, Button } from 'react-native-paper';
-
+import { TextInput, Appbar, Button, Snackbar } from 'react-native-paper';
 
 export default class MemberEnterGroup extends Component {
 
@@ -30,21 +29,30 @@ export default class MemberEnterGroup extends Component {
         };
     }
 
-
     handleCheckCode = async () => {
+
+        console.log('handleCheckCode');
+        
         this.setState({ loading: true });
+
         let matching_group_query = await firebase.firestore().collection('groups').where("member_code", "==", this.state.code).get();
 
         if(matching_group_query._docs.length > 0) {
             let group_id = matching_group_query._docs[0].id;
-            let group_name = matching_group_query._docs[0].name;
+            let group_name = matching_group_query._docs[0]._data.name;
+            //console.log('matching_group_query', matching_group_query);
+            console.log('group_id', group_id);
+            console.log('group_name', group_name);
             this.props.navigation.navigate('memberPick', {group_id: group_id, group_name: group_name});
         }
         else {
-            //show error
+            this.setState(
+                { errorMessage: 'Code incorrect' },
+                this.setState({ loading: false, toast: true })
+              )
         }
-
     };
+
 
     //TODO fix this...
     handleCodeChange = (value) => {
@@ -81,6 +89,14 @@ export default class MemberEnterGroup extends Component {
                             </Button>
                         </View>
 
+                        <View style={{ elevation: 3 }}>
+                            <Snackbar
+                            visible={this.state.toast}
+                            onDismiss={() => this.setState({ toast: false })}
+                            >
+                            {this.state.errorMessage}
+                            </Snackbar>
+                        </View>
                     </View>
                 </View>
             </View>

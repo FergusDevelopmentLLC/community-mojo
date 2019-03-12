@@ -136,7 +136,7 @@ export default class SkillCreate extends Component {
                         <View style={{ flexDirection: 'row' }}>
                             <TextInput
                                 mode='outlined'
-                                autoCapitalize='none'
+                                autoCapitalize="words"
                                 label='For what?'
                                 style={{ width: '60%' }}
                                 onChange={(event) => this.handleNameChange( event.nativeEvent.text )}
@@ -162,14 +162,13 @@ export default class SkillCreate extends Component {
                         <View>
                             <TextInput
                                 mode='outlined'
-                                autoCapitalize='none'
+                                autoCapitalize="words"
                                 label='Note'
                                 style={{ width: '100%', height: 80 }}
                                 onChangeText={note => this.setState({ note })}
                                 value={this.state.note}
                             />
                         </View>
-
 
                         <View style={styles.loginbtns}>
                             <Button

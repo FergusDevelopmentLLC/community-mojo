@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import firebase from 'react-native-firebase';
 import { View, StyleSheet, Picker, Alert } from 'react-native';
 import { TextInput, Appbar, Button } from 'react-native-paper';
-import DeviceInfo from 'react-native-device-info';
 
 export default class MemberCreawte extends Component {
 
@@ -21,8 +20,13 @@ export default class MemberCreawte extends Component {
 
         super(props);
 
+        console.log('here');
+
         let group_id = this.props.navigation.getParam('group_id', '0');
+        console.log('group_id', group_id);
+
         let group_name = this.props.navigation.getParam('group_name', '');
+        console.log('group_name', group_name);
 
         this.state = {
             first_name: '',
@@ -43,8 +47,6 @@ export default class MemberCreawte extends Component {
 
     handleSave = async () => {
 
-        console.log('handleSave');
-
         this.setState({ loading: true });
         
         let existingMembers = await firebase.firestore().collection('members').get();
@@ -61,13 +63,12 @@ export default class MemberCreawte extends Component {
             points: 0,
             city: this.state.city,
             state: this.state.state,
-            src: next_avatar_img,
-            device_id: DeviceInfo.getUniqueID()
+            src: next_avatar_img            
         }
 
-        //console.log(member);
+        console.log(member);
 
-        //get id of new skill
+        //get id of new member
         let newMemberRef = await firebase.firestore().collection('members').doc();
         let new_member_id = newMemberRef.id;
         

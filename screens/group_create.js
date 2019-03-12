@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from "react-native-firebase";
 import { View, StyleSheet, Picker } from 'react-native';
 import { TextInput, Appbar, Button } from "react-native-paper";
+import { randomString } from "../helper/helpers";
 
 export default class GroupCreate extends Component {
 
@@ -34,11 +35,16 @@ export default class GroupCreate extends Component {
     handleCreateGroup = () => {
 
         this.setState({ loading: true });
+
+        let code = randomString(6, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+
+        console.log(code)
       
         const group = {
             city: this.state.home_city,
             name: this.state.meetup_name,
-            state: this.state.state
+            state: this.state.state,
+            code: code
         }
 
         const groupNoState = {
@@ -72,8 +78,8 @@ export default class GroupCreate extends Component {
             .catch((err) => {
                 console.log(err);
             });
-
     };
+
 
     render() {
         return (
@@ -82,7 +88,7 @@ export default class GroupCreate extends Component {
                     <View style={styles.textinput}>
                         <TextInput
                             mode="outlined"
-                            autoCapitalize="none"
+                            autoCapitalize="words"
                             label="Meetup name"
                             onChangeText={meetup_name => this.setState({ meetup_name })}
                             value={this.state.meetup_name}
@@ -91,7 +97,7 @@ export default class GroupCreate extends Component {
                         <View style={{ flexDirection: "row" }}>
                             <TextInput
                                 mode="outlined"
-                                autoCapitalize="none"
+                                autoCapitalize="words"
                                 label="Home city"
                                 style={{ width: '60%' }}
                                 onChangeText={home_city => this.setState({ home_city })}

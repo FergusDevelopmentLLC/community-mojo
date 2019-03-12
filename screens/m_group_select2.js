@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import firebase from "react-native-firebase";
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { Button, Appbar } from 'react-native-paper';
 
@@ -11,7 +10,7 @@ export default class MemberGroupSelect extends Component {
                 <Appbar.Header>
                     <Appbar.Content 
                         titleStyle = {styles.titleStyle}
-                        title='Select your meetup' />
+                        title='Select your meetup.' />
                 </Appbar.Header>
             ),
         };
@@ -20,52 +19,16 @@ export default class MemberGroupSelect extends Component {
     constructor(props) {
 
         super(props);
-
-        this.memberGroupsRef = firebase.firestore().collection("groups");
-
+        
         this.state = {
             memberGroups: [],
-            loading: true
+            loading: false
         }
     }
 
     
     componentDidMount() {
-        this.queryMemberGroups();
-    }
-
-    queryMemberGroups() {
-        this.memberGroupsRef.get().then(data => this.onCollectionUpdate(data));
-    }
-
-    onCollectionUpdate = querySnapshot => {
-    
-        let groups = [];
-
-        querySnapshot.forEach(doc => {
-
-            const {
-                city,
-                name
-            } = doc.data();
-
-            let group = {};
-            group.id = doc.id;
-            group.city = city;
-            group.name = name;
-
-            groups.push(group);
-
-        });
-
-        this.setState({
-            memberGroups: groups,
-            loading: false
-        });
-    };
-
-    handleOnNavigateBack = () => {
-        this.queryMemberGroups();
+        
     }
 
     render() {
@@ -81,25 +44,20 @@ export default class MemberGroupSelect extends Component {
             return (
                 <View style={styles.container}>
                     <View style={styles.informationContainer}>
-                        {
-                            this.state.memberGroups.map((memberGroup, index) => (
-                                <View key={index} style={styles.rowbtns}>
-                                    <Button
-                                        mode="contained"
-                                        key={index}
-                                        //onPress={() => this.props.navigation.navigate("MemberList", { group_id: userGroup.id, group_name: userGroup.name, onNavigateBack: this.handleOnNavigateBack })}
-                                    >
-                                        {memberGroup.name}
-                                    </Button>
-                                </View>
-                            ))
-                        }
+                        <View style={styles.rowbtns}>
+                            <Button
+                                mode="contained"
+                                onPress={() => this.props.navigation.navigate("membersViewGroup", { group_id: 'decentralize_co', group_name: 'Decentralize Colorado' })}
+                            >
+                                Decentralize Colorado
+                            </Button>
+                        </View>
                         <View style={styles.rowbtns}>
                             <Button
                                 mode="contained"
                                 onPress={() => this.props.navigation.navigate('memberEnterCode')}
                             >
-                            New (I have a code)
+                            I have a code
                             </Button>
                         </View>
                         <View style={styles.rowbtns}>

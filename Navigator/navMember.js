@@ -1,16 +1,17 @@
 import { StackNavigator } from "react-navigation";
 
-import m_group_select from "../screens/m_group_select";
+import m_group_select2 from "../screens/m_group_select2";
 import m_group_code from "../screens/m_group_code";
 import m_member_create from "../screens/m_member_create";
 import m_pick_member from "../screens/m_pick_member";
 import m_member from "../screens/m_member";
 import m_members from "../screens/m_members";
 
+
 const MemberPath = StackNavigator(
   {
     memberGroupSelect: { 
-      screen: m_group_select
+      screen: m_group_select2
     },
     memberEnterCode: { 
       screen: m_group_code
