@@ -162,7 +162,12 @@ export default class memberPick extends Component {
         if (this.state.loading == false && this.state.tableData.length == 0) {
             return (
                 <View style={styles.container}>
-                    <Text>No members yet</Text>
+                    <View style={styles.headertextwrapper}>
+                        <Text style={styles.headertext}>Find your name below or <Text style={{ color: 'red' }} onPress={() => { this.goToMemberCreate() }}>tap here</Text> to join {this.state.group_name}.</Text>
+                    </View>
+                    <View style={styles.container}>
+                        <Text>No members yet</Text>
+                    </View>
                 </View>
             )
         }

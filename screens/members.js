@@ -48,9 +48,9 @@ export default class Members extends Component {
 
     async queryGroup() {
         let group = await this.groupRef.get();
-        console.log(group);
+        //console.log(group);
         this.setState({
-            code: group._data.member_code
+            code: group._data.code
         });
     }
 
@@ -111,6 +111,7 @@ export default class Members extends Component {
         }
     }
 
+
     renderCellElement(data, rowIndex, columnIndex) {
 
         switch (columnIndex) {
@@ -145,14 +146,15 @@ export default class Members extends Component {
         if (this.state.loading == false && this.state.tableData.length == 0) {
             return (
                 <View style={styles.container}>
-                    <Text>No members yet (member_code: {this.state.code})</Text>
+                    <Text style={{  marginBottom: 3 }}>Member code: {this.state.code}</Text>
+                    <Text>No members yet</Text>
                 </View>
             )
         }
         else {
             return (
                 <View style={styles.container}>
-                    <Text style={{  marginBottom: 3 }}>Member_code: {this.state.code}</Text>
+                    <Text style={{  marginBottom: 3 }}>Member code: {this.state.code}</Text>
                     <Text style={{ fontWeight: 'bold', marginBottom: 10 }}>Members</Text>
                     <Table borderStyle={{ borderColor: 'transparent' }}>
                         {

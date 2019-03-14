@@ -32,10 +32,12 @@ export default class MemberEnterGroup extends Component {
     handleCheckCode = async () => {
 
         console.log('handleCheckCode');
+
+        console.log(this.state.code);
         
         this.setState({ loading: true });
 
-        let matching_group_query = await firebase.firestore().collection('groups').where("member_code", "==", this.state.code).get();
+        let matching_group_query = await firebase.firestore().collection('groups').where("code", "==", this.state.code).get();
 
         if(matching_group_query._docs.length > 0) {
             let group_id = matching_group_query._docs[0].id;
