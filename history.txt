@@ -998,3 +998,1005 @@
  1995  clear
  1996  python3 slow.py
  1997  history > history.txt
+
+
+  1000  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1001  nvm use 8.9.4
+ 1002  yarn clean_android
+ 1003  yarn android
+ 1004  yarn clean_android
+ 1005  nvm use 8.9.4
+ 1006  yarn clean_android
+ 1007  yarn android
+ 1008  git status
+ 1009  git commit -a
+ 1010  git push
+ 1011  exit
+ 1012  yarn run start --reset-cache
+ 1013  nvm use 8.9.4
+ 1014  yarn run start --reset-cache
+ 1015  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1016  time ffmpeg -v quiet -y -i zoom_0.mp4 -vcodec copy -acodec copy -ss 00:11:00 -t 00:13:24 -sn zoom_ex.mp4
+ 1017  time ffmpeg -v quiet -y -i zoom_0.mp4 -vcodec copy -acodec copy -ss 00:11:19 -t 00:13:24 -sn zoom_ex2.mp4
+ 1018  ls
+ 1019  ffmpeg -i 2019-01-25 14-31-19.flv -vcodec copy leader.mp4
+ 1020  ffmpeg -i "2019-01-25 14-31-19.flv" -vcodec copy leader.mp4
+ 1021  ls
+ 1022  cd ..
+ 1023  ls
+ 1024  cd video/
+ 1025  ls
+ 1026  ls Movie_Part_1.mp4 Movie_Part_2.mp4 | perl -ne 'print "file $_"' | ffmpeg -f concat -i - -c copy Movie_Joined.mp4
+ 1027  ls leader.mp4 dc.mp4 | perl -ne 'print "file $_"' | ffmpeg -f concat -i - -c copy dc_1.mp4
+ 1028  ffmpeg -i leader.mp4 -i dc.mp4 -i leader.mp4 -filter_complex "[0:v] [0:a] [1:v] [1:a] [2:v] [2:a] concat=n=3:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" dc_2.mp4
+ 1029  ffmpeg -i leader.mp4 -i dc.mp4 -i leader.mp4   -filter_complex "[0:v] [0:a] [1:v] [1:a] [2:v] [2:a] concat=n=3:v=1:a=1 [v] [a]"   -map "[v]" -map "[a]" dc2.mp4
+ 1030  ffmpeg -i "concat:leader.mp4|dc.mp4|leader.mp4" -c copy dc3.mp4
+ 1031  ffmpeg -i "concat:leader.mp4|dc.mp4|leader.mp4" -c copy dc_output.mp4
+ 1032  cd ..
+ 1033  cd /obs
+ 1034  ls
+ 1035  cd decentralizeco/
+ 1036  cd video/
+ 1037  ls
+ 1038  ffmpeg -i dc.mp4 -r 30 dc2.mp4
+ 1039  ls
+ 1040  rm *
+ 1041  ls
+ 1042  rm -R *
+ 1043  ls
+ 1044  free && sync && echo 3 > /proc/sys/vm/drop_caches && free
+ 1045  sudo free && sudo sync && sudo echo 3 > /proc/sys/vm/drop_caches && sudo free
+ 1046  echo 1 > /proc/sys/vm/drop_caches
+ 1047  sudo echo 1 > /proc/sys/vm/drop_caches
+ 1048  sudo terminal
+ 1049  sudo su
+ 1050  ks
+ 1051  ls
+ 1052  ffmpeg -i dc5.mp4
+ 1053  ffmpeg -i dc5.mp4 -b 3526k dc6.mp4
+ 1054  nemo .
+ 1055  sudo apt-get install build-essential autoconf linux-headers-$(uname -r)
+ 1056  sudo -s 'apt-get update && apt-get install xserver-xorg-input-wacom'
+ 1057  sudo -s 'apt-get update && apt-get install xserver-xorg-input-wacom
+ 1058  sudo apt-get update
+ 1059  sudo apt-get install xserver-xorg-input-wacom
+ 1060  sudo apt-get install build-essential && sudo apt-get build-dep libwacom
+ 1061  cd ~/.config/Inkscape/
+ 1062  %APPDATA%\inkscape\
+ 1063  cd %APPDATA%\inkscape\
+ 1064  echo %APPDATA%
+ 1065  find / -name "preferences.xml"
+ 1066  sudo find / -name "preferences.xml"
+ 1067  cd /home/geodevadmin/.config/inkscape/
+ 1068  ls
+ 1069  rn preferences.xml pref.xml
+ 1070  rename preferences.xml pref.xml
+ 1071  ls
+ 1072  sudo nano .
+ 1073  sudo nemo .
+ 1074  ffmpeg -i 01_intro.flv -c:v libx264 -crf 19 -strict experimental 01_intro.mp4
+ 1075  ffmpeg -i 03_sidetrack.flv -c:v libx264 -crf 19 -strict experimental 03_sidetrack.mp4
+ 1076  ffmpeg -i 02_32circles.flv -c:v libx264 -crf 19 -strict experimental 02_32circles.mp4
+ 1077  cd original_flv/
+ 1078  ffmpeg -i 07_exclusion_to_black_triangles.flv -c:v libx264 -crf 19 -strict experimental 07_exclusion_to_black_triangles.mp4
+ 1079  exit
+ 1080  exit
+ 1081  ls
+ 1082  cd original_flv/
+ 1083  ffmpeg -i 08_inverse.flv -c:v libx264 -crf 19 -strict experimental 08_inverse.mp4
+ 1084  exit
+ 1085  cd original_flv/
+ 1086  ffmpeg -i 09_color_in_inkscape.flv -c:v libx264 -crf 19 -strict experimental 09_color_in_inkscape.mp4
+ 1087  exit
+ 1088  ls
+ 1089  cd ..
+ 1090  ls
+ 1091  cd original_flv/
+ 1092  ls
+ 1093  ffmpeg -i 04_outlines_freehand.flv -c:v libx264 -crf 19 -strict experimental 04_outlines_freehand.mp4
+ 1094  ecit
+ 1095  exit
+ 1096  ffmpeg -i 05_outlines_automated.flv -c:v libx264 -crf 19 -strict experimental 05_outlines_automated.mp4
+ 1097  ls
+ 1098  cd or
+ 1099  cd original_flv/
+ 1100  ffmpeg -i 05_outlines_automated.flv -c:v libx264 -crf 19 -strict experimental 05_outlines_automated.mp4
+ 1101  exit
+ 1102  cd original_flv/
+ 1103  ffmpeg -i 06_coloring_triangles_black.flv -c:v libx264 -crf 19 -strict experimental 06_coloring_triangles_black.mp4
+ 1104  exit
+ 1105  cd original_flv/
+ 1106  ffmpeg -i 10_color_with_markers.flv -c:v libx264 -crf 19 -strict experimental 10_color_with_markers.mp4
+ 1107  ffmpeg -i intro.flv -c:v libx264 -crf 19 -strict experimental intro.mp4
+ 1108  ffmpeg -i outtro.flv -c:v libx264 -crf 19 -strict experimental outtro.mp4
+ 1109  ssh root@104.236.16.91
+ 1110  locate alien*.svg
+ 1111  locate *.svg
+ 1112  locate *alien*.svg
+ 1113  find . -name "alien*.svg"
+ 1114  find /mnt/workspace_2TBSG/ -name "alien*.svg"
+ 1115  nvm list
+ 1116  nvm use 8.9.3
+ 1117  npm install
+ 1118  ls
+ 1119  cd ..
+ 1120  ls
+ 1121  ./install.sh
+ 1122  sudo apt-get install libfontconfig-dev
+ 1123  ./install.sh
+ 1124  sudo su
+ 1125  ls
+ 1126  ./install.sh
+ 1127  ls
+ 1128  cd ~/figma-app-linux_x64
+ 1129  ls
+ 1130  cd dist
+ 1131  ls
+ 1132  cd linux-unpacked/
+ 1133  ls
+ 1134  ./figma
+ 1135  cd ..
+ 1136  ls
+ 1137  ./Figma 68.5.0.AppImage
+ 1138  cd ..
+ 1139  cd ~/Downloads
+ 1140  ls
+ 1141  cd figma-app-linux-master/
+ 1142  ls
+ 1143  ./install.sh
+ 1144  nvm list
+ 1145  nvm install 8.9.3
+ 1146  nvm list
+ 1147  nvm use 8.9.3
+ 1148  ./install.sh
+ 1149  ls
+ 1150  npm i
+ 1151  npm run getSrc
+ 1152  nvm list
+ 1153  ls
+ 1154  sudo nemo .
+ 1155  cd app
+ 1156  ls
+ 1157  npm i font-manager
+ 1158  cd ..
+ 1159  export npm_config_target=8.9.3
+ 1160  cd app
+ 1161  npm i font-manager
+ 1162  cd ..
+ 1163  npm run electron-rebuild
+ 1164  cd app
+ 1165  ls
+ 1166  nvm list
+ 1167  npm install
+ 1168  ls
+ 1169  npm install
+ 1170  ./install.sh
+ 1171  sudo su root
+ 1172  sudo root
+ 1173  sudo su root
+ 1174  git clone https://github.com/carloslfu/figma-app-linux.git
+ 1175  ;s
+ 1176  ls
+ 1177  python crop.py
+ 1178  nemo .
+ 1179  python crop.py
+ 1180  nemo .
+ 1181  ./install
+ 1182  ./install.sh
+ 1183  ls
+ 1184  cd ..
+ 1185  ./install.sh
+ 1186  sudo su
+ 1187  ls
+ 1188  cd Downloads
+ 1189  ls
+ 1190  cd ~/Downloads
+ 1191  ls
+ 1192  cd figma-app-linux-master/
+ 1193  ./install.sh
+ 1194  nvm list
+ 1195  nvm use 8.9.3
+ 1196  npm i
+ 1197  npm run getSrc
+ 1198  export npm_config_target=8.9.3
+ 1199  cd app
+ 1200  ls
+ 1201  npm i font-manager
+ 1202  cd ..
+ 1203  npm run electron-rebuild
+ 1204  npm run build
+ 1205  cd dist
+ 1206  ls
+ 1207  cd linux-unpacked/
+ 1208  ls
+ 1209  cd .
+ 1210  cd ..
+ 1211  cd dist
+ 1212  ls
+ 1213  nemo .
+ 1214  chmod a+x Subsurface*.AppImage
+ 1215  chmod a+x Figma*.AppImage
+ 1216  ./Figma*.AppImage
+ 1217  cd ..
+ 1218  cd figma-app-linux
+ 1219  ls
+ 1220  ./install.sh
+ 1221  cd ..
+ 1222  cd figma-app-linux_x64/
+ 1223  ls
+ 1224  ./install.sh
+ 1225  cd ..
+ 1226  cd Downloads/
+ 1227  ls
+ 1228  cd figma-app-linux-master/
+ 1229  ls
+ 1230  ./install.sh
+ 1231  export npm_config_target=8.9.3
+ 1232  npm i
+ 1233  npm run getSrc
+ 1234  cd app
+ 1235  npm i font-manager
+ 1236  cd ..
+ 1237  npm run electron-rebuild
+ 1238  npm run build
+ 1239  npm i
+ 1240  npm run getSrc
+ 1241  nvm list
+ 1242  nvm use 8.9.3
+ 1243  export npm_config_target=8.9.3
+ 1244  cd app
+ 1245  npm i font-manager
+ 1246  cd ..
+ 1247  npm run electron-rebuild
+ 1248  npm run build
+ 1249  ls
+ 1250  ./Figma*.AppImage
+ 1251  nvm list
+ 1252  nvm use 8.9.3
+ 1253  ./Figma*.AppImage
+ 1254  sudo snap install --edge figma
+ 1255  cd ~/Downloads/
+ 1256  ls
+ 1257  sudo dpkg -i figma-linux_0.2.1_amd64.deb
+ 1258  sudo dpkg -i figma-linux_0.3.0_amd64.deb
+ 1259  sudo dpkg -i figma-linux_0.2.1_amd64.deb
+ 1260  sudo dpkg -i figma-linux_0.3.0_amd64.deb
+ 1261  figma-linux
+ 1262  yarn clean_android
+ 1263  nvm use 8.9.3
+ 1264  yarn clean_android
+ 1265  yarn log_android
+ 1266  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1267  yarn run start --reset-cache
+ 1268  nvm list
+ 1269  nvm use 8.9.3
+ 1270  yarn run start --reset-cache
+ 1271  cd /usr/local
+ 1272  ls
+ 1273  cd android-studio/
+ 1274  ls
+ 1275  cd bin
+ 1276  ls
+ 1277  sudo su
+ 1278  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1279  nvm use 8.9.3
+ 1280  yarn run start --reset-cache
+ 1281  yarn android
+ 1282  nvm use 8.9.3
+ 1283  yarn android
+ 1284  nvm use 8.9.3
+ 1285  npm install -g react-devtools
+ 1286  react-devtools
+ 1287  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1288  nvm use 8.9.3
+ 1289  yarn android
+ 1290  adb shell input keyevent 82
+ 1291  adb reverse tcp:8081 tcp:8081
+ 1292  adb reverse tcp:8097 tcp:8097
+ 1293  adb reverse tcp:8081 tcp:8081
+ 1294  nvm use 8.9.3
+ 1295  yarn log_android
+ 1296  yarn android
+ 1297  nvm use 8.9.3
+ 1298  yarn run start --reset-cache
+ 1299  python crop.py
+ 1300  nemo .
+ 1301  python crop.py
+ 1302  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1303  nvm use 8.9.3
+ 1304  yarn android
+ 1305  adb reverse tcp:8081 tcp:8081
+ 1306  yarn android
+ 1307  nvm use 8.9.3
+ 1308  yarn run start --reset-cache
+ 1309  clear
+ 1310  yarn run start --reset-cache
+ 1311  yarn android
+ 1312  nvm use 8.9.3
+ 1313  yarn android
+ 1314  nvm use 8.9.3
+ 1315  yarn run start --reset-cache
+ 1316  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1317  nvm use 8.9.3
+ 1318  yarn android
+ 1319  git status
+ 1320  git add .
+ 1321  git status
+ 1322  git commit -a
+ 1323  git push
+ 1324  nvm use 8.9.3
+ 1325  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1326  yarn android
+ 1327  nvm use 8.9.3
+ 1328  yarn android
+ 1329  tasks
+ 1330  plist
+ 1331  /list
+ 1332  nvm use 8.9.3
+ 1333  yarn android
+ 1334  plist
+ 1335  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1336  nvm use 8.9.3
+ 1337  yarn run start --reset-cache
+ 1338  nvm use 8.9.3
+ 1339  yarn android
+ 1340  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1341  nvm use 8.9.3
+ 1342  yarn run start --reset-cache
+ 1343  yarn android
+ 1344  nvm use 8.9.3
+ 1345  yarn android
+ 1346  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1347  nvm use 8.9.3
+ 1348  yarn run start --reset-cache
+ 1349  nvm use 8.9.3
+ 1350  yarn android
+ 1351  nvm use 8.9.3
+ 1352  yarn run start --reset-cache
+ 1353  nvm use 8.9.3
+ 1354  yarn run start --reset-cache
+ 1355  nvm use 8.9.3
+ 1356  yarn android
+ 1357  nvm list
+ 1358  nvm use 8.9.3
+ 1359  npm install -g node-firestore-import-export
+ 1360  firestore-export --accountCredentials path/to/credentials/file.json --backupFile /backups/myDatabase.json
+ 1361  firestore-export --accountCredentials /home/geodevadmin/programming/community-mojo/android/app/google-services.json --backupFile myDatabase.json
+ 1362  firestore-export --accountCredentials /home/geodevadmin/programming/community-mojo/android/app/community-mojo-firebase-adminsdk-16g94-b3ec67bccf.json --backupFile myDatabase.json
+ 1363  ls
+ 1364  pwd
+ 1365  nvm use 8.9.3
+ 1366  yarn android
+ 1367  firestore-export --accountCredentials /home/geodevadmin/programming/community-mojo/android/app/community-mojo-firebase-adminsdk-16g94-b3ec67bccf.json --backupFile myDatabase2.json
+ 1368  sudo nemo
+ 1369  sudo nemo .
+ 1370  firestore-export --accountCredentials /home/geodevadmin/programming/community-mojo/android/app/community-mojo-firebase-adminsdk-16g94-b3ec67bccf.json --backupFile myDatabase.json
+ 1371  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1372  nvm use 8.9.3
+ 1373  yarn run start --reset-cache
+ 1374  nvm use 8.9.3
+ 1375  yarn android
+ 1376  npm install --save @google-cloud/firestore
+ 1377  npm uninstall --save @google-cloud/firestore
+ 1378  yarn run start --reset-cache
+ 1379  yarn android
+ 1380  nvm use 8.9.3
+ 1381  yarn run start --reset-cache
+ 1382  nvm use 8.9.3
+ 1383  yarn run start --reset-cache
+ 1384  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1385  nvm use 8.9.3
+ 1386  yarn android
+ 1387  nvm use 8.9.3
+ 1388  yarn run start --reset-cache
+ 1389  nvm use 8.9.3
+ 1390  yarn android
+ 1391  yarn android
+ 1392  nvm use 8.9.3
+ 1393  yarn android
+ 1394  nvm use 8.9.3
+ 1395  yarn run start --reset-cache
+ 1396  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1397  git status
+ 1398  git add .
+ 1399  git commit -a
+ 1400  git status
+ 1401  git push
+ 1402  git status
+ 1403  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1404  kill -9 watchman
+ 1405  killall -9 watchman
+ 1406  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1407  nvm use 8.9.3
+ 1408  yarn run start --reset-cache
+ 1409  yarn run start --verbose
+ 1410  nvm use 8.9.3
+ 1411  yarn android
+ 1412  yarn clean_android
+ 1413  yarn android
+ 1414  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1415  killall -9 watchman
+ 1416  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1417  nvm use 8.9.3
+ 1418  yarn run start --verbose
+ 1419  yarn run start --reset-cache
+ 1420  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1421  nvm use 8.9.3
+ 1422  yarn run start --reset-cache
+ 1423  nvm use 8.9.3
+ 1424  yarn android
+ 1425  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1426  nvm use 8.9.3
+ 1427  yarn run start --reset-cache
+ 1428  yarn androd
+ 1429  nvm use 8.9.3
+ 1430  yarn androd
+ 1431  yarn android
+ 1432  ls
+ 1433  mkdir old
+ 1434  exit
+ 1435  git status
+ 1436  git add .
+ 1437  git commit -a
+ 1438  git push
+ 1439  git status
+ 1440  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1441  kill -9 watchman
+ 1442  pkill -9 watchman
+ 1443  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1444  kill pid 11601
+ 1445  kill -pid 11601
+ 1446  pkill -pid 11601
+ 1447  kill -9 11601
+ 1448  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1449  kill -9 11689
+ 1450  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1451  killall -9 watchman
+ 1452  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1453  killall watchman
+ 1454  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1455  exit
+ 1456  nvm use 8.9.3
+ 1457  yarn android
+ 1458  firestore-export --accountCredentials /home/geodevadmin/programming/community-mojo/android/app/community-mojo-firebase-adminsdk-16g94-b3ec67bccf.json --backupFile myDatabase3.json
+ 1459  history
+ 1460  firestore-export --accountCredentials /home/geodevadmin/programming/community-mojo/android/app/community-mojo-firebase-adminsdk-16g94-b3ec67bccf.json --backupFile myDatabase2.json
+ 1461  nvm use 8.9.3
+ 1462  firestore-export --accountCredentials /home/geodevadmin/programming/community-mojo/android/app/community-mojo-firebase-adminsdk-16g94-b3ec67bccf.json --backupFile myDatabase2.json
+ 1463  firestore-export --accountCredentials /home/geodevadmin/programming/community-mojo/android/app/community-mojo-firebase-adminsdk-16g94-b3ec67bccf.json --backupFile myDatabase3.json
+ 1464  nvm use 8.9.3
+ 1465  yarn run start --reset-cache
+ 1466  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1467  killall 12056
+ 1468  nvm use 8.9.3
+ 1469  yarn run start --reset-cache
+ 1470  exit
+ 1471  git status
+ 1472  git add .
+ 1473  git commit -a
+ 1474  git push
+ 1475  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1476  nvm use 8.9.3
+ 1477  yarn android
+ 1478  adb
+ 1479  adb devices
+ 1480  yarn android
+ 1481  nvm list
+ 1482  npm install -g firebase-tools
+ 1483  mkdir firecast
+ 1484  cd firecast/
+ 1485  firebase login
+ 1486  firebase init
+ 1487  sudo nemo .
+ 1488  nvm list
+ 1489  nvm use 8.9.3
+ 1490  ls
+ 1491  firebase login
+ 1492  firebase init
+ 1493  cd functions
+ 1494  ls
+ 1495  npm install firebase-admin@latest firebase-functions@latest
+ 1496  cd ..
+ 1497  firebase deploy
+ 1498  git status
+ 1499  git add .
+ 1500  git update -all
+ 1501  git commit -a
+ 1502  git push
+ 1503  firebase login
+ 1504  sudo firebase deploy
+ 1505  nvm use 8.9.3
+ 1506  sudo firebase deploy
+ 1507  firebase login
+ 1508  firebase deploy
+ 1509  firebase deploy\
+ 1510  firebase deploy
+ 1511  nvm use 8.9.3
+ 1512  yarn run start --reset-cache
+ 1513  exit
+ 1514  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1515  yarn android
+ 1516  nvm use 8.9.3
+ 1517  yarn android
+ 1518  nvm use 8.9.3
+ 1519  yarn run start --reset-cache
+ 1520  sudo apt install ./code_1.31.1-1549938243_amd64 (2).deb
+ 1521  sudo apt install ./code_1.31.1-1549938243_amd64.deb
+ 1522  nvm use 8.9.3
+ 1523  yarn run start --reset-cache
+ 1524  exit
+ 1525  yarn run start --reset-cache
+ 1526  nvm use 8.9.3
+ 1527  yarn run start --reset-cache
+ 1528  exit
+ 1529  nvm use 8.9.3
+ 1530  yarn run start --reset-cache
+ 1531  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1532  nvm use 8.9.3
+ 1533  yarn run start --reset-cache
+ 1534  ls
+ 1535  rm -r node_modules
+ 1536  nvm list
+ 1537  yarn install
+ 1538  yarn run start --reset-cache
+ 1539  rm -rf /tmp/haste-map-react-native-packager-*
+ 1540  yarn run start --reset-cache
+ 1541  rm -rf node_modules
+ 1542  yarn install
+ 1543  node_modules/react-native/packager/packager.sh --reset-cache
+ 1544  rm -fr $TMPDIR/react-*
+ 1545  watchman watch-del-all
+ 1546  exit
+ 1547  nvm use 8.9.3
+ 1548  yarn run start --reset-cache
+ 1549  yarn android
+ 1550  exit
+ 1551  watchman watch-del-all
+ 1552  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1553  exit
+ 1554  nvm list
+ 1555  nvm use 8.9.3
+ 1556  yarn android
+ 1557  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1558  killall -9 watchman
+ 1559  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1560  cd ..
+ 1561  react-native init list-edit
+ 1562  nvm list
+ 1563  nvm use 8.9.4
+ 1564  nvm use 8.9.3
+ 1565  react-native init list-edit
+ 1566  sudo react-native init list-edit
+ 1567  nvm use 8.9.4
+ 1568  sudo react-native init list-edit
+ 1569  nvm use 8.9.3
+ 1570  sudo react-native init list-edit
+ 1571  nvm use 8.9.4
+ 1572  npm install -g react-native-cli
+ 1573  react-native init list-edit
+ 1574  react-native init listedit
+ 1575  react-native run-android
+ 1576  ls
+ 1577  cd listedit/
+ 1578  react-native run-android
+ 1579  nvm use 8.9.3
+ 1580  yarn android
+ 1581  react-native run-android
+ 1582  npm install -g react-native-cli
+ 1583  react-native run-android
+ 1584  yarn install react-navigation
+ 1585  yarn add react-navigation
+ 1586  react-native run-android
+ 1587  nvm use 8.9.3
+ 1588  yarn run start --reset-cache
+ 1589  react-native run-android
+ 1590  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1591  nvm list
+ 1592  nvm use 8.9.3
+ 1593  yarn run start --reset-cache
+ 1594  nvm use 8.9.3
+ 1595  yarn android
+ 1596  nvm use 8.9.3
+ 1597  yarn android
+ 1598  git status
+ 1599  git add .
+ 1600  git commit -a
+ 1601  exit
+ 1602  git status
+ 1603  exit
+ 1604  nvm use 8.9.3
+ 1605  yarn start
+ 1606  exit
+ 1607  nvm use 8.9.3
+ 1608  yarn run start --reset-cache
+ 1609  exit
+ 1610  nvm list
+ 1611  nvm use 8.9.3
+ 1612  nvm start
+ 1613  yarn android
+ 1614  exit
+ 1615  nvm use 8.9.3
+ 1616  yarn run start --reset-cache
+ 1617  git status
+ 1618  git add .
+ 1619  git commit -a
+ 1620  git push
+ 1621  yarn run start --reset-cache
+ 1622  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1623  yarn android
+ 1624  nvm use 8.9.3
+ 1625  yarn android
+ 1626  nvm use 8.9.3
+ 1627  yarn android
+ 1628  git status
+ 1629  git add .
+ 1630  git commit -a
+ 1631  git push
+ 1632  yarn android
+ 1633  git status
+ 1634  git commit -a
+ 1635  git pust
+ 1636  git push
+ 1637  yarn android
+ 1638  git status
+ 1639  git commit -a
+ 1640  git push
+ 1641  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1642  nvm use 8.9.3
+ 1643  yarn run start --reset-cache
+ 1644  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1645  nvm use 8.9.3
+ 1646  yarn run start --reset-cache
+ 1647  yarn android
+ 1648  nvm use 8.9.3
+ 1649  yarn android
+ 1650  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1651  nvm use 8.9.3
+ 1652  yarn android
+ 1653  nvm use 8.9.3
+ 1654  yarn run start --reset-cache
+ 1655  nvm use 8.9.3
+ 1656  yarn android
+ 1657  exit
+ 1658  firebase deploy
+ 1659  nvm list
+ 1660  nvm use 8.9.3
+ 1661  firebase deploy
+ 1662  cd ..
+ 1663  mkdir community-mojo-backend
+ 1664  cd community-mojo-backend/
+ 1665  ls
+ 1666  echo "# community-mojo-backend" >> README.md
+ 1667  git init
+ 1668  git add README.md
+ 1669  git commit -m "first commit"
+ 1670  git remote add origin https://github.com/FergusDevelopmentLLC/community-mojo-backend.git
+ 1671  git push -u origin master
+ 1672  git status
+ 1673  ls
+ 1674  nvm use 8.9.3
+ 1675  yarn android
+ 1676  nvm use 8.9.3
+ 1677  yarn run start --reset-cache
+ 1678  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1679  nvm list
+ 1680  nvm use 8.9.3
+ 1681  yarn install
+ 1682  cd functions/
+ 1683  ls
+ 1684  nvm list
+ 1685  yarn install
+ 1686  firebase deploy
+ 1687  firebase login
+ 1688  firebase init functions
+ 1689  firebase login
+ 1690  firebase init functions
+ 1691  firebase deploy
+ 1692  git status
+ 1693  git add .
+ 1694  git status
+ 1695  git add .
+ 1696  status
+ 1697  cd ..
+ 1698  git staus
+ 1699  git status
+ 1700  git add .
+ 1701  git status
+ 1702  git add .
+ 1703  git status
+ 1704  git commit -a
+ 1705  git push
+ 1706  firebase deploy
+ 1707  nvm use 8.9.3
+ 1708  yarn android
+ 1709  nvm use 8.9.3
+ 1710  yarn run start --reset-cache
+ 1711  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1712  firebase deploy
+ 1713  nvm list
+ 1714  nvm use 8.9.3
+ 1715  firebase deploy
+ 1716  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1717  nvm use 8.9.3
+ 1718  yarn android
+ 1719  git status
+ 1720  git commit -a
+ 1721  git push
+ 1722  keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+ 1723  cd android/
+ 1724  ./gradlew assembleRelease
+ 1725  nemo .
+ 1726  cd ..
+ 1727  ls
+ 1728  exit
+ 1729  git status
+ 1730  git push
+ 1731  exit
+ 1732  cd android
+ 1733  ./gradlew clean
+ 1734  cd ..
+ 1735  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+ 1736  nvm list
+ 1737  nvm use 8.9.3
+ 1738  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+ 1739  exit
+ 1740  nvm use 8.9.3
+ 1741  react-native run-android --variant=release
+ 1742  exit
+ 1743  nvm use 8.9.3
+ 1744  yarn android
+ 1745  react-native run-android --variant=release
+ 1746  cd android
+ 1747  ./gradlew assembleRelease
+ 1748  react-native run-android --variant=release
+ 1749  cd ..
+ 1750  react-native run-android --variant=release
+ 1751  react-native run-android --configuration=release
+ 1752  adb logcat
+ 1753  exit
+ 1754  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1755  nvm use 8.9.3
+ 1756  yarn run start --reset-cache
+ 1757  exit
+ 1758  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1759  nvm use 8.9.3
+ 1760  yarn android
+ 1761  react-native run-android --configuration=release
+ 1762  react-native run-android --variant=release
+ 1763  ls
+ 1764  rm -R node_modules
+ 1765  nvm list
+ 1766  yarn install
+ 1767  react-native run-android --variant=release
+ 1768  android clean
+ 1769  yarn clean_android
+ 1770  react-native run-android --variant=release
+ 1771  yarn clean_android
+ 1772  react-native run-android --variant=release
+ 1773  yarn android
+ 1774  git status
+ 1775  git commit .
+ 1776  git push
+ 1777  yarn run start --reset-cache
+ 1778  nvm list
+ 1779  nvm use 8.9.3
+ 1780  yarn run start --reset-cache
+ 1781  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1782  nvm use 8.9.3
+ 1783  yarn run start --reset-cache
+ 1784  git status
+ 1785  yarn run start --reset-cache
+ 1786  nvm use 8.9.3
+ 1787  yarn android
+ 1788  nvm use 8.9.3
+ 1789  yarn run start --reset-cache
+ 1790  yarn react-native-device-info --save
+ 1791  nvm list
+ 1792  npm install react-native-device-info --save
+ 1793  react-native link react-native-device-info
+ 1794  yarn run start --reset-cache
+ 1795  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1796  nvm use 8.9.3
+ 1797  yarn android
+ 1798  ls
+ 1799  mkdir global
+ 1800  yarn android
+ 1801  nvm use 8.9.3
+ 1802  yarn android
+ 1803  react-native run-android --variant=release
+ 1804  yarn android
+ 1805  react-native run-android --variant=release
+ 1806  yarn clean_android
+ 1807  react-native run-android --variant=release
+ 1808  react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+ 1809  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+ 1810  react-native run-android --variant=release
+ 1811  yarn clean_android
+ 1812  yarn android
+ 1813  react-native run-android --variant=release
+ 1814  yarn android
+ 1815  react-native run-android --variant=release
+ 1816  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+ 1817  react-native run-android --variant=release
+ 1818  nvm use 8.9.3
+ 1819  yarn run start --reset-cache
+ 1820  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1821  nvm use 8.9.3
+ 1822  yarn android
+ 1823  yarn android_clean
+ 1824  yarn clean
+ 1825  yarn clean_android
+ 1826  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+ 1827  yarn android
+ 1828  cd android
+ 1829  ./gradlew installDebug --stacktrace
+ 1830  cd ..
+ 1831  yarn android
+ 1832  yarn android --debug
+ 1833  yarn android --info
+ 1834  rnpm unlink react-native-device-info
+ 1835  npm unlink react-native-device-info
+ 1836  yarn android
+ 1837  react-native unlink react-native-device-info
+ 1838  yarn android
+ 1839  react-native run-android --variant=release
+ 1840  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+ 1841  watchman watch-del-all
+ 1842  rm -rf node_modules
+ 1843  yarn install
+ 1844  rm -rf /tmp/metro-bundler-cache-*
+ 1845  rm -rf /tmp/haste-map-react-native-packager-*
+ 1846  react-native run-android --variant=release
+ 1847  exit
+ 1848  nvm use 8.9.3
+ 1849  yarn run start --reset-cache
+ 1850  remove -R node_modules
+ 1851  rm -R node_modules
+ 1852  nvm list
+ 1853  yarn install
+ 1854  yarn run start --reset-cache
+ 1855  yarn react-native-device-info
+ 1856  nvm list
+ 1857  npm react-native-device-info
+ 1858  npm install react-native-device-info
+ 1859  yarn android
+ 1860  git status
+ 1861  git stash
+ 1862  yarn run start --reset-cache
+ 1863  react-native unlink react-native-device-info
+ 1864  react-native uninstall react-native-device-info
+ 1865  yarn run start --reset-cache
+ 1866  exit
+ 1867  yarn remove react-native-device-info
+ 1868  nvm list
+ 1869  nvm use 8.9.3
+ 1870  yarn remove react-native-device-info
+ 1871  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1872  nvm list
+ 1873  nvm us 8.9.3
+ 1874  nvm use 8.9.3
+ 1875  yarn remove react-native-device-info
+ 1876  yarn run start --reset-cache
+ 1877  react-native run-android --variant=release
+ 1878  yarn run start --reset-cache
+ 1879  nvm use 8.9.3
+ 1880  yarn android
+ 1881  sudo nemo .
+ 1882  yarn android
+ 1883  yarn run start --reset-cache
+ 1884  react-native run-android --variant=release
+ 1885  yarn android
+ 1886  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+ 1887  react-native run-android --variant=release
+ 1888  adb debug
+ 1889  adb devices
+ 1890  adb debug
+ 1891  adb logcat
+ 1892  nvm use 8.9.3
+ 1893  yarn android
+ 1894  react-native run-android --variant=release
+ 1895  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+ 1896  react-native run-android --variant=release
+ 1897  git status
+ 1898  git add .
+ 1899  git commit -a
+ 1900  git push
+ 1901  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+ 1902  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1903  nvm use 8.9.3
+ 1904  yarn run start --reset-cache
+ 1905  nvm use 8.9.3
+ 1906  yarn run start --reset-cache
+ 1907  exit
+ 1908  nvm use 8.9.3
+ 1909  yarn android
+ 1910  exite
+ 1911  exit
+ 1912  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1913  exit
+ 1914  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1915  nvm use 8.9.3
+ 1916  yarn run start --reset-cache
+ 1917  yarn android
+ 1918  nvm use 8.9.3
+ 1919  yarn android
+ 1920  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+ 1921  react-native run-android --variant=release
+ 1922  git status
+ 1923  git commit -a
+ 1924  git push
+ 1925  sudo dpkg -i figma-linux_0.4.0_amd64.deb
+ 1926  sudo dpkg -i figma-linux_0.2.1_amd64.deb
+ 1927  sudo dpkg -i figma-linux_0.4.0_amd64.deb
+ 1928  ffmpeg -i GMT20190313-010335_Decentrali_3840x2160.mp4 -r 24 dc12.mp4
+ 1929  ffmpeg -i GMT20190313-010335_Decentrali_3840x2160.mp4 -r 25 dc12.mp4
+ 1930  python simple.py
+ 1931  pip install pytube
+ 1932  pip install --upgrade pip
+ 1933  sudo pip install --upgrade pip
+ 1934  pip install pytube --upgrade
+ 1935  sudo pip install pytube --upgrade
+ 1936  sudo pip install git+https://github.com/nficano/pytube.git --upgrade
+ 1937  python simple.py
+ 1938  chmod -x kdenlive.appimage
+ 1939  ./kdenlive.appimage
+ 1940  sudo ./kdenlive.appimage
+ 1941  ffmpeg -y -i dc12.mp4 -vf "setpts=1.25*PTS" -r 24 dc12_v2.mp4
+ 1942  bash ./kdenlive-multirender.sh Kdenlive-render-script.sh 16 4
+ 1943  bash ./kdenlive-multirender.sh dc12.sh 16 4
+ 1944  ffmpeg -i dc12.mp4 -vf scale=1920:-1 -c:v libx264 -preset veryslow -crf 24 dc12_v2.mp4
+ 1945  ffmpeg -i dc12.mp4 -vf scale=1920:-1 -c:v libx264 -preset veryslow -crf 24 dc12_v3.mp4
+ 1946  df
+ 1947  ffmpeg -i dc12final_v4.mp4 -vf scale=1920:-1 -c:v libx264 -preset veryslow -crf 24 dc12_v5.mp4
+ 1948  ffmpeg -i dcfinal_v4.mp4 -r 24 dc_v6.mp4
+ 1949  ffmpeg -i dcfinal_v5.mp4 -r 24 dc_v6.mp4
+ 1950  ffmpeg -i dc12final_v4.mp4 -r 24 dc_v6.mp4
+ 1951  ffmpeg -i dc12final_v4.mp4 -r 25 dc_v7.mp4
+ 1952  sudo apt autoremove
+ 1953  sudo du -sh /var/cache/apt
+ 1954  sudo apt-get clean
+ 1955  sudo du -sh /var/cache/apt
+ 1956  du -sh ~/.cache/thumbnails
+ 1957  rm -rf ~/.cache/thumbnails/*
+ 1958  sudo dpkg --list 'linux-image*'
+ 1959  sudo apt-get install gtkorphan
+ 1960  gtkorphan
+ 1961  sudo gtkorphan
+ 1962  nvm use 8.9.3
+ 1963  yarn android
+ 1964  cd ~
+ 1965  ls
+ 1966  sudo nano .bash_profile
+ 1967  sudo nano ~/.bash_profile
+ 1968  ls
+ 1969  echo $PATH
+ 1970  vi ~/.bash_profile
+ 1971  sudo nano ~/.profile
+ 1972  exit
+ 1973  nvm use 8.9.3
+ 1974  yarn run start --reset-cache
+ 1975  git status
+ 1976  git pull
+ 1977  yarn run start --reset-cache
+ 1978  exit
+ 1979  sudo nemo
+ 1980  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1981  exit
+ 1982  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1983  watchman watch-del-all && rm -rf node_modules/ && yarn cache clean && yarn install && yarn start -- --reset-cache
+ 1984  nmv use 8.9.3
+ 1985  nvm use 8.9.3
+ 1986  watchman watch-del-all && rm -rf node_modules/ && yarn cache clean && yarn install && yarn start -- --reset-cache
+ 1987  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1988  watchman watch-del-all
+ 1989  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1990  exit
+ 1991  nvm use 8.9.3
+ 1992  yarn run start --reset-cache
+ 1993  exit
+ 1994  yarn android
+ 1995  nvm use 8.9.3
+ 1996  yarn android
+ 1997  exit
+ 1998  WATCHMAN_CONFIG_FILE=/home/geodevadmin/programming/community-mojo/.watchmanconfig watchman --foreground --logfile=/dev/stdout --no-save-state --statefile=/dev/null
+ 1999  history

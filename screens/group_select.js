@@ -23,13 +23,14 @@ export default class GroupSelect extends Component {
 
         let user_id = this.props.navigation.getParam('user_id', firebase.auth().currentUser.uid);
 
-        this.userGroupsRef = firebase.firestore().collection("users").doc(user_id).collection("groups");
+        this.userGroupsRef = firebase.firestore().collection("groups");
 
         this.state = {
             userGroups: [],
             loading: true
         }
     }
+
 
     componentDidMount() {
         this.queryGroups();
@@ -76,7 +77,6 @@ export default class GroupSelect extends Component {
           console.log(e);
         }
       };
-
 
     render() {
         const state = this.state;
